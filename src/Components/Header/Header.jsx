@@ -35,9 +35,7 @@ export const Header = () => {
               <div className="number">1</div>
             </div>
             <div className="badge">
-              <a>
                 <i className="fas fa-sign-out"></i>
-              </a>
             </div>
             <i id="toggle-theme" className="fas fa-moon icon"></i>
           </div>

@@ -1,4 +1,5 @@
 import { LandingPage } from "./Pages/LandingPage/LandingPage";
+import { ProductPage } from "./Pages/ProductPage/ProductPage";
 import {
   Footer,
   Header,
@@ -15,6 +16,15 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/Products"
+            element={
+              <ProductContainer>
+                <Sidebar />
+                <ProductPage />
+              </ProductContainer>
+            }
+          />
         </Routes>
       </LandingContainer>
     </>

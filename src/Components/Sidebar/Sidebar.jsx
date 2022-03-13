@@ -14,7 +14,7 @@ export const Sidebar = () => {
     <aside>
       <div
         id="sidebar-menu"
-        className="sidebar stick position-open"
+        className="sidebar stick position-hidden"
         // className={`sidebar stick ${
         //   sidebar ? "position-open" : "position-hidden"
         // }`}

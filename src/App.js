@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import "./App.css";
 import { Footer, Sidebar } from "./Components";
 
 function App() {

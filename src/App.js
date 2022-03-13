@@ -2,14 +2,15 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./App.css";
+import { Footer, Sidebar } from "./Components";
 
 function App() {
   const [someData, setSomeData] = useState([]);
 
   useEffect(() => {
     (async function () {
-      const { data } = await axios.get("/api/brands");
-      setSomeData(data.brands);
+      const { data } = await axios.get("/api/products");
+      setSomeData(data.products);
       console.log(data);
     })();
   }, []);
@@ -17,8 +18,9 @@ function App() {
   return (
     <>
       {someData.map((items) => (
-        <img src={items.image} alt="" />
+        <h1>{items.title}</h1>
       ))}
+      <Sidebar/>
     </>
   );
 }

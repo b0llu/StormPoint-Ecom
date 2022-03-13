@@ -6,7 +6,7 @@ import "./Header.css";
 // import { CartPage } from "../../Cart/CartPage";
 
 export const Header = () => {
-  const { forLength } = useEcom();
+  // const { forLength } = useEcom();
 
   return (
     <nav>
@@ -18,21 +18,21 @@ export const Header = () => {
         <div className="margin-left-auto">
           <div className="icon-container">
             <div className="badge">
-              <Link to="/Profile" element={<ProfilePage />}>
+              {/* <Link to="/Profile" element={<ProfilePage />}> */}
                 <i className="fa-solid fas fa-user"></i>
-              </Link>
+              {/* </Link> */}
             </div>
             <div className="badge">
-              <Link to="/Wishlist" element={<WishlistPage />}>
+              {/* <Link to="/Wishlist" element={<WishlistPage />}> */}
                 <i className="far fa-heart"></i>
-              </Link>
-              <div className="number">{forLength.wishlistLength}</div>
+              {/* </Link> */}
+              <div className="number">1</div>
             </div>
             <div className="badge">
-              <Link to="/Cart" element={<CartPage />}>
+              {/* <Link to="/Cart" element={<CartPage />}> */}
                 <i className="fas fa-shopping-cart"></i>
-              </Link>
-              <div className="number">{forLength.cartLength}</div>
+              {/* </Link> */}
+              <div className="number">1</div>
             </div>
             <div className="badge">
               <a>

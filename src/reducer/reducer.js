@@ -4,6 +4,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         loading: !state.loading,
+      };
+
+    case "INITIALIZE_PRODUCTS":
+      return {
+        ...state,
         product: action.payload,
       };
 

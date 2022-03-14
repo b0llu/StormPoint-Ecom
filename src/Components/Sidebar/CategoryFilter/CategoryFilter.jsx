@@ -17,11 +17,11 @@ export const CartegoryFilter = () => {
 
   return (
     <>
+      <li className="filter-section-title">Categories</li>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <li className="filter-section-title">Categories</li>
           {categoryData.map((category) => {
             return (
               <li key={category.id}>

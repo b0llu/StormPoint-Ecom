@@ -17,11 +17,11 @@ export const BrandFilter = () => {
 
   return (
     <>
+      <li className="filter-section-title">Brands</li>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <li className="filter-section-title">Brands</li>
           {brandData.map((brands) => {
             return (
               <li key={brands.id}>

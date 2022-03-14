@@ -18,7 +18,8 @@ export const CardContainer = () => {
     dispatch({ type: "LOADING" }),
       (async function () {
         const { data } = await axios.get("./api/products");
-        dispatch({ type: "LOADING", payload: data.products });
+        dispatch({ type: "INITIALIZE_PRODUCTS", payload: data.products });
+        dispatch({ type: "LOADING" });
       })();
   }, []);
 

@@ -7,6 +7,7 @@ a {
   font-size: 3rem;
   color: var(--primary-color);
   margin-left: 1rem;
+  padding-bottom: 1rem;
 }
 
 .navbar {
@@ -14,6 +15,7 @@ a {
   background-color: var(--nav-bg-color);
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header-input {
@@ -42,6 +44,7 @@ a {
   margin-right: 1rem;
   font-size: 2rem;
   color: var(--icon-color);
+  padding-bottom: 1rem;
 }
 
 .icon-container a {

@@ -8,6 +8,7 @@ export const CategorySection = () => {
 
   const [categoryData, setCategoryData] = useState([]);
 
+  // initializing categories from data
   useEffect(() => {
       (async function () {
         const { data } = await axios.get("/api/categories");

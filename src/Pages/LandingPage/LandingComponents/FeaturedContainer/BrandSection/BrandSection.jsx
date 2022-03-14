@@ -8,6 +8,7 @@ export const BrandSection = () => {
 
   const [brandData, setBrandData] = useState([]);
 
+  // initializing brands from data
   useEffect(() => {
     dispatch({ type: "LOADING" }),
       (async function () {

@@ -8,6 +8,7 @@ export const BrandFilter = () => {
 
   const [brandData, setBrandData] = useState([]);
 
+  // initializing brands from data
   useEffect(() => {
       (async function () {
         const { data } = await axios.get("/api/brands");

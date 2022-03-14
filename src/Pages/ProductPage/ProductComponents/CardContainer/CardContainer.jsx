@@ -14,6 +14,7 @@ export const CardContainer = () => {
   // const { priceRange } = Combiner();
   const { loading, product, dispatch } = useReducerContext();
 
+  // initializing products from data
   useEffect(() => {
     dispatch({ type: "LOADING" }),
       (async function () {

@@ -22,7 +22,7 @@ export const brands = [
     _id: uuid(),
     brandName: "Nvidia",
     image:
-      "https://play-lh.googleusercontent.com/De8IqRJAA2eURmaGuLIVbQXZQe2xAnHhj_52W6qP-nP7prEZuj5gR0XdFaH4Dpk_bxE=s180-rw",
+      "https://preview.redd.it/nibcq8te6d771.jpg?width=640&crop=smart&auto=webp&s=625114dad49707a08906c90b7ed5cffa2428ef24",
   },
   {
     _id: uuid(),

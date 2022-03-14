@@ -1,27 +1,34 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Loader } from "../../../../../Components";
+import { useReducerContext } from "../../../../../context/useReducer.context";
 
 export const CategorySection = () => {
+  const { loading, dispatch } = useReducerContext();
+
   const [categoryData, setCategoryData] = useState([]);
 
   useEffect(() => {
-    (async function () {
-      const { data } = await axios.get("/api/categories");
-      setCategoryData(data.categories);
-    })();
+      (async function () {
+        const { data } = await axios.get("/api/categories");
+        setCategoryData(data.categories);
+      })();
   }, []);
 
   return (
-    <div className="categories-section">
-      {categoryData.map((categories) => (
-        <div key={categories.id} className="category">
-          <img
-            className="rsp-img"
-            src={categories.image}
-          />
-          <h2>{categories.categoryName}</h2>
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="categories-section">
+          {categoryData.map((categories) => (
+            <div key={categories.id} className="category">
+              <img className="rsp-img" src={categories.image} />
+              <h2>{categories.categoryName}</h2>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      )}
+    </>
   );
 };

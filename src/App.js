@@ -1,25 +1,22 @@
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Footer, Sidebar } from "./Components";
+import { LandingPage } from "./Pages/LandingPage/LandingPage";
+import {
+  Footer,
+  Header,
+  Sidebar,
+  ProductContainer,
+  LandingContainer,
+} from "./Components/index";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [someData, setSomeData] = useState([]);
-
-  useEffect(() => {
-    (async function () {
-      const { data } = await axios.get("/api/products");
-      setSomeData(data.products);
-      console.log(data);
-    })();
-  }, []);
-
   return (
     <>
-      {someData.map((items) => (
-        <h1>{items.title}</h1>
-      ))}
-      <Sidebar/>
+      <LandingContainer>
+        <Header />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+        </Routes>
+      </LandingContainer>
     </>
   );
 }

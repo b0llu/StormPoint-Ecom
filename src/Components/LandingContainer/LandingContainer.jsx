@@ -2,10 +2,9 @@
 import "./LandingContainer.css";
 
 export const LandingContainer = ({ children }) => {
-  const { sidebar } = useRoute();
+  // const { sidebar } = useRoute();
   return (
-    <section className={`landing-container ${sidebar ? "position-fixed" : ""}`}>
-      {children}
-    </section>
+    // <section className={`landing-container ${sidebar ? "position-fixed" : ""}`}>
+    <section className="landing-container">{children}</section>
   );
 };

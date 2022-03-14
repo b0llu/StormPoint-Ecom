@@ -27,7 +27,8 @@ export const brands = [
   {
     _id: uuid(),
     brandName: "Cooler Master",
-    image: "https://i.dlpng.com/static/png/6985005_preview.png",
+    image:
+      "https://pngimage.net/wp-content/uploads/2018/05/cooler-master-logo-png-3.png",
   },
   {
     _id: uuid(),

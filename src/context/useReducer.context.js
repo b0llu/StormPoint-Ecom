@@ -4,13 +4,13 @@ import { reducer } from "../reducer/reducer";
 const ReducerContext = createContext();
 
 const ReducerProvider = ({ children }) => {
-  const [{ loading, product }, dispatch] = useReducer(reducer, {
+  const [{ loading, products }, dispatch] = useReducer(reducer, {
     loading: false,
-    product: [],
+    products: [],
   });
 
   return (
-    <ReducerContext.Provider value={{ loading, product, dispatch }}>
+    <ReducerContext.Provider value={{ loading, products, dispatch }}>
       {children}
     </ReducerContext.Provider>
   );

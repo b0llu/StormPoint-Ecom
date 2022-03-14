@@ -6,12 +6,12 @@ export const reducer = (state, action) => {
         ...state,
         loading: !state.loading,
       };
-
+ 
     // storing products
     case "INITIALIZE_PRODUCTS":
       return {
         ...state,
-        product: action.payload,
+        products: action.payload,
       };
 
     default:

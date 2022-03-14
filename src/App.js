@@ -8,6 +8,7 @@ import {
   LandingContainer,
 } from "./Components/index";
 import { Routes, Route } from "react-router-dom";
+import MockAPI from "./Mockman";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               </ProductContainer>
             }
           />
+            < Route path='mockman' element={<MockAPI/>} />
         </Routes>
       </LandingContainer>
     </>

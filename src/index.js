@@ -4,9 +4,11 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ReducerProvider } from "./context/useReducer.context";
+import { useSignUp } from "./Hook/useSignUp";
 
 // Call make Server
 makeServer();
+useSignUp();
 
 ReactDOM.render(
   <React.StrictMode>

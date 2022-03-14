@@ -12,7 +12,7 @@ import "./CardContainer.css";
 export const CardContainer = () => {
   // const { cart, wishlist, dispatch } = useEcom();
   // const { priceRange } = Combiner();
-  const { loading, product, dispatch } = useReducerContext();
+  const { loading, products, dispatch } = useReducerContext();
 
   // initializing products from data
   useEffect(() => {
@@ -30,7 +30,7 @@ export const CardContainer = () => {
         <Loader />
       ) : (
         <>
-          {product.map((products) => {
+          {products.map((products) => {
             return (
               <div
                 key={products.id}

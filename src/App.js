@@ -1,4 +1,5 @@
 import { LandingPage } from "./Pages/LandingPage/LandingPage";
+import { ProductPage } from "./Pages/ProductPage/ProductPage";
 import {
   Footer,
   Header,
@@ -7,6 +8,7 @@ import {
   LandingContainer,
 } from "./Components/index";
 import { Routes, Route } from "react-router-dom";
+import MockAPI from "./Mockman";
 
 function App() {
   return (
@@ -15,6 +17,16 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/Products"
+            element={
+              <ProductContainer>
+                <Sidebar />
+                <ProductPage />
+              </ProductContainer>
+            }
+          />
+            < Route path='mockman' element={<MockAPI/>} />
         </Routes>
       </LandingContainer>
     </>

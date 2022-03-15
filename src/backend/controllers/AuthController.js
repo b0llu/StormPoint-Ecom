@@ -2,7 +2,8 @@ import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
 import { formatDate } from "../utils/authUtils";
 import bcrypt from "bcryptjs";
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 /**
  * All the routes related to Auth are present here.

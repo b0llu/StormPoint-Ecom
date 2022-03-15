@@ -31,4 +31,19 @@ export const categories = [
     categoryName: "Cabinet",
     image: "https://m.media-amazon.com/images/I/71va1gKN5YL._SL1500_.jpg",
   },
+  {
+    _id: uuid(),
+    categoryName: "Keyboard & Mouse",
+    image: "https://m.media-amazon.com/images/I/61pUul1oDlL._SL1500_.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Speaker",
+    image: "https://m.media-amazon.com/images/I/712NrHlRg2L._SX522_.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Motherboard",
+    image: "https://m.media-amazon.com/images/I/713es1ZFweL._SL1200_.jpg",
+  },
 ];

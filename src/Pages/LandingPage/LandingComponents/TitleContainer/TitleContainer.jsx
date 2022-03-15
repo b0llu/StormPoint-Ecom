@@ -1,7 +1,7 @@
 import "./TitleContainer.css";
-// import { Link } from "react-router-dom";
-// import { ProductContainer, Sidebar } from "../../../Components/components";
-// import { ProductPage } from "../../../ProductPage/ProductPage";
+import { Link } from "react-router-dom";
+import { ProductContainer, Sidebar } from "../../../../Components";
+import { ProductPage } from "../../../ProductPage/ProductPage";
 
 export const TitleContainer = () => {
   return (
@@ -14,7 +14,7 @@ export const TitleContainer = () => {
       <div className="hero-section">
         <h1 className="name">Stormpoint</h1>
         <p>"Build Your Ultimate Setup"</p>
-        {/* <Link
+        <Link
           to="/Products"
           element={
             <ProductContainer>
@@ -22,9 +22,9 @@ export const TitleContainer = () => {
               <ProductPage />
             </ProductContainer>
           }
-        > */}
-        <button className="btn primary-btn">Shop Now</button>
-        {/* </Link> */}
+        >
+          <button className="btn primary-btn">Shop Now</button>
+        </Link>
       </div>
     </div>
   );

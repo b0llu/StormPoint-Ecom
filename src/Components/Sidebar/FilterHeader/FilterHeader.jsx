@@ -1,21 +1,24 @@
-// import { useRoute } from "../../../Context/useRoute";
+import { useReducerContext } from "../../../context/useReducer.context";
 
 export const FilterHeader = () => {
-  // const { sidebar, setSidebar } = useRoute();
+  const { sidebar, dispatch } = useReducerContext();
+
   return (
     <div className="title-of-filter">
-      {/* {sidebar ? (
+      {sidebar ? (
         <button
-          onClick={() => setSidebar(false)}
+          onClick={() => dispatch({ type: "SIDEBAR" })}
           className="link-no-style filter-hover"
         >
           CONFIRM
         </button>
       ) : (
         <button className="link-no-style filter-hover">FILTERS</button>
-      )} */}
-      <button className="link-no-style filter-hover">FILTERS</button>
-      <button className="link-no-style filter-hover underline-primary">
+      )}
+      <button
+        onClick={() => dispatch({ type: "RESET" })}
+        className="link-no-style filter-hover underline-primary"
+      >
         CLEAR ALL
       </button>
     </div>

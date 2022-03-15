@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
-            path="/Products"
+            path="/products"
             element={
               <ProductContainer>
                 <Sidebar />

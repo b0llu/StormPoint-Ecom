@@ -1,7 +1,8 @@
-// import { useEcom } from "../../../Context/useEcomReducer.context";
+import { useReducerContext } from "../../../context/useReducer.context";
 
 export const SortFilter = () => {
-  // const { dispatch, sort } = useEcom();
+  const { sort, dispatch } = useReducerContext();
+
   return (
     <>
       <li className="filter-section-title">Sort by</li>
@@ -10,8 +11,8 @@ export const SortFilter = () => {
           <input
             type="radio"
             name="sort"
-            // onChange={() => dispatch({ type: "PRICE_HIGH_TO_LOW" })}
-            // checked={sort === "High-to-Low"}
+            onChange={() => dispatch({ type: "PRICE_HIGH_TO_LOW" })}
+            checked={sort === "High-to-Low"}
           />
           Price High to Low
         </label>
@@ -21,8 +22,8 @@ export const SortFilter = () => {
           <input
             type="radio"
             name="sort"
-            // onChange={() => dispatch({ type: "PRICE_LOW_TO_HIGH" })}
-            // checked={sort === "Low-to-High"}
+            onChange={() => dispatch({ type: "PRICE_LOW_TO_HIGH" })}
+            checked={sort === "Low-to-High"}
           />
           Price Low to High
         </label>

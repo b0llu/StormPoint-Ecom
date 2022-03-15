@@ -4,7 +4,7 @@ import { useReducerContext } from "../../../context/useReducer.context";
 import { Loader } from "../../Loader/Loader";
 
 export const CartegoryFilter = () => {
-  const { loading } = useReducerContext();
+  const { loading, categories, dispatch } = useReducerContext();
 
   const [categoryData, setCategoryData] = useState([]);
 
@@ -27,7 +27,17 @@ export const CartegoryFilter = () => {
             return (
               <li key={category.id}>
                 <label className="form-label">
-                  <input type="checkbox" />
+                  <input
+                    checked={categories[category.value]}
+                    value={category.value}
+                    onClick={(e) =>
+                      dispatch({
+                        type: "CATEGORY_FILTER",
+                        payload: e.target.value,
+                      })
+                    }
+                    type="checkbox"
+                  />
                   {category.categoryName}
                 </label>
               </li>

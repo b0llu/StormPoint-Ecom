@@ -11,11 +11,6 @@
   position: fixed;
 }
 
-.stick {
-  position: sticky;
-  top: 3rem;
-}
-
 .title-of-filter {
   display: flex;
   justify-content: space-between;
@@ -134,7 +129,6 @@
   margin-right: 1rem;
 }
 
-
 @media screen and (max-width: 850px) {
   .sidebar {
     margin-left: 0;
@@ -153,9 +147,9 @@
   .position-hidden {
     position: fixed;
     width: 60%;
-    height: 100%;
+    height: calc(100vh - 145px);
     left: 0;
-    top: 0;
+    top: 18.5rem;
     z-index: 3;
     transform: translateX(-100%);
     transition: 0.2s ease-in-out;
@@ -165,9 +159,9 @@
   .position-open {
     position: fixed;
     width: 60%;
-    height: 100%;
+    height: calc(100vh - 145px);
     left: 0;
-    top: 0;
+    top: 18.5rem;
     z-index: 3;
     transform: translateX(0);
     transition: 0.2s ease-in-out;
@@ -179,7 +173,6 @@
     background-color: var(--default-color);
     padding-top: 2rem 1rem;
   }
-
 
   .link-no-style {
     font-size: 2rem;

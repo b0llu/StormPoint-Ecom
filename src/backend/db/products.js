@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    // image: "https://m.media-amazon.com/images/I/716gjmLvNuL._SX679_.jpg",
+    image: "https://m.media-amazon.com/images/I/716gjmLvNuL._SX679_.jpg",
     title: "Intel core i7-10700k",
     subTitle: "Intel",
     description:
@@ -22,6 +22,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/61RnzuOIOoL._SL1002_.jpg",
     title: "Intel Core i9-12900K",
     subTitle: "Intel",
     description:
@@ -36,6 +37,7 @@ export const products = [
   {
     _id: uuid(),
     title: "HyperX Fury Black 16GB 2666MHz DDR4",
+    image: "https://m.media-amazon.com/images/I/61Udx3CqBtL._SL1428_.jpg",
     subTitle: "HyperX",
     description:
       "HyperX is the high-performance product division of Kingston Technology, the world’s largest independent memory manufacturer.",
@@ -48,7 +50,8 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "HyperX Impact 16GB 2666MHz DDR4 CL15 260-Pin SODIMM Laptop Memory",
+    image: "https://m.media-amazon.com/images/I/61ATQAOa+yL._SL1000_.jpg",
+    title: "HyperX Impact 16GB 2666MHz Laptop Memory",
     subTitle: "HyperX",
     description:
       "Powerful SODIMM Performance Plug N Play Automatic Overclocking Intel XMP-Ready Profiles. Plug N Play Automatic Overclocking",
@@ -61,6 +64,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/91g6nUHsCLL._SL1500_.jpg",
     title: "GeForce RTX 3060 Eagle OC 12G",
     subTitle: "Nvidia",
     description:
@@ -74,10 +78,11 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "GeForce RTX 3060 Eagle OC 12G",
+    image: "https://m.media-amazon.com/images/I/81pvDYeb+qL._SL1500_.jpg",
+    title: "ASUS TUF Gaming GeForce RTX™ 3060 V2 12GB",
     subTitle: "Nvidia",
     description:
-      "The award-winning MSI TORX Fan 3.0 design keeps the limits of thermal performance turning. Fan blades alternate between traditional blades that focus airflow into the heatsink",
+      "ASUS TUF Gaming GeForce RTX™ 3060 V2 OC Edition 12GB GDDR6 Buffed-up Design LHR Graphics Card with 3 Years Warranty Triple Fan (TUF-RTX3060-O12G-V2-GAMING)",
     price: 314990,
     badge: false,
     brandName: "Nvidia",
@@ -87,6 +92,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/81a8AWjxHvL._SL1500_.jpg",
     title: "Cooler Master MasterBox TD500",
     subTitle: "Cooler Master",
     description:
@@ -100,11 +106,12 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Cooler Master K380",
+    image: "https://m.media-amazon.com/images/I/71F2FEbSaQS._SL1500_.jpg",
+    title: "Cooler Master MasterBox K501L",
     subTitle: "Cooler Master",
     description:
-      "Cooler Master K380 Cabinet with Mesh and Honeycomb Vent on Front Panel for Superior Cooling, Black, (RC-K380-KWN1)",
-    price: 4000,
+      "Cooler Master MasterBox K501L RGB Mid Tower Gaming Cabinet with Pre-Installed Fans and Tempered Glass Side Panel",
+    price: 4300,
     badge: false,
     brandName: "Cooler Master",
     categoryName: "Cabinet",
@@ -113,11 +120,12 @@ export const products = [
   },
   {
     _id: uuid(),
-    title: "Corsair iCUE H100i RGB Pro XT",
+    image: "https://m.media-amazon.com/images/I/71c1K6btzwL._SL1500_.jpg",
+    title: "Corsair iCUE H115i RGB Pro XT",
     subTitle: "Corsair",
     description:
-      "Corsair iCUE H100i RGB Pro XT, 240mm Radiator, Dual 120mm PWM Fans, Software Control, Liquid CPU Cooler, RGB Pump (CW-9060043-WW)",
-    price: 10500,
+      "Corsair iCUE H115i RGB Pro XT, 280mm Radiator, Dual 140mm PWM Fans, Software Control, Liquid CPU Cooler",
+    price: 11600,
     badge: "Selling Fast",
     brandName: "Corsair",
     categoryName: "Liquid Cooler",
@@ -126,6 +134,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/515bLaqKqzL._SX679_.jpg",
     title: "Corsair Hydro H60 Liquid CPU Cooler",
     subTitle: "Corsair",
     description:
@@ -135,6 +144,119 @@ export const products = [
     brandName: "Corsair",
     categoryName: "Liquid Cooler",
     alt: "Cooler Img",
+    inStock: true,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/61+U9lMboFL._SX522_.jpg",
+    title: "Logitech K380 Multi-Device Bluetooth Wireless Keyboard",
+    subTitle: "Logitech",
+    description:
+      "Logitech K380 Multi-Device Bluetooth Wireless Keyboard with Easy-Switch for Upto 3 Devices, Slim, 2 Year Battery for PC, Laptop, Windows, Mac, Chrome OS, Android, iPad OS, Apple TV (Dark Grey)",
+    price: 3000,
+    badge: false,
+    brandName: "Logitech",
+    categoryName: "Keyboard & Mouse",
+    alt: "Keyboard Img",
+    inStock: true,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/61jD2DhC9zL._SL1500_.jpg",
+    title: "Logitech K230 Compact Wireless Keyboard",
+    subTitle: "Logitech",
+    description:
+      "Logitech K230 Compact Wireless Keyboard for Windows, 2.4GHz Wireless with USB Unifying Receiver, Space-Saving Design, 2-Year Battery Life, PC/Laptop- Black",
+    price: 845,
+    badge: false,
+    brandName: "Logitech",
+    categoryName: "Keyboard & Mouse",
+    alt: "Keyboard Img",
+    inStock: true,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/61UxfXTUyvL._SL1500_.jpg",
+    title: "Logitech G102 Light Sync Gaming Mouse",
+    subTitle: "Logitech",
+    description:
+      "Logitech G102 Light Sync Gaming Mouse with Customizable RGB Lighting, 6 Programmable Buttons, Gaming Grade Sensor, 8 k dpi Tracking,16.8mn Color, Light Weight (Black)",
+    price: 1500,
+    badge: false,
+    brandName: "Logitech",
+    categoryName: "Keyboard & Mouse",
+    alt: "Mouse Img",
+    inStock: true,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/71x15RjzfUL._SL1500_.jpg",
+    title: "Logitech G402 Hyperion Fury Wired Gaming Mouse",
+    subTitle: "Logitech",
+    description:
+      "Logitech G402 Hyperion Fury Wired Gaming Mouse, 4,000 DPI, Lightweight, 8 Programmable Buttons, Compatible with PC/Mac - Black",
+    price: 2000,
+    badge: false,
+    brandName: "Logitech",
+    categoryName: "Keyboard & Mouse",
+    alt: "Mouse Img",
+    inStock: true,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/81x069mwcbL._SX522_.jpg",
+    title:
+      "ASUS ROG Strix B550-F Gaming WiFi 6 (AMD AM4 Socket for 3rd Gen AMD Ryzen) ATX Gaming Motherboard",
+    subTitle: "Asus",
+    description:
+      "ASUS ROG Strix B550-F Gaming WiFi 6 (AMD AM4 Socket for 3rd Gen AMD Ryzen) ATX Gaming Motherboard with PCIe 4.0, teamed Power Stages, BIOS Flashback, Dual M.2 SATA 6 Gbps USB & Aura Sync",
+    price: 20500,
+    badge: false,
+    brandName: "Asus",
+    categoryName: "Motherboard",
+    alt: "Motherboard Img",
+    inStock: false,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/71lxAerR4QL._SL1500_.jpg",
+    title: "ASUS ROG X570 Crosshair VIII Formula ATX Motherboard",
+    subTitle: "Asus",
+    description:
+      "ASUS ROG X570 Crosshair VIII Formula ATX Motherboard with PCIe 4.0, on-Board WiFi 6 (802.11Ax), 5 Gbps LAN, USB 3.2, SATA, M.2, Node and Aura Sync RGB Lighting",
+    price: 52000,
+    badge: false,
+    brandName: "Asus",
+    categoryName: "Motherboard",
+    alt: "Motherboard Img",
+    inStock: true,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/91mjQZEwqzL._SX679_.jpg",
+    title: "MSI H410M PRO-VH mATX Motherboard",
+    subTitle: "MSI",
+    description:
+      "MSI H410M PRO-VH mATX Motherboard (10th Gen Intel Core, LGA 1200 Socket, DDR4, USB 3.2 Gen 1, Intel Gigabit LAN, VGA/HDMI)",
+    price: 5300,
+    badge: false,
+    brandName: "MSI",
+    categoryName: "Motherboard",
+    alt: "Motherboard Img",
+    inStock: false,
+  },
+  {
+    _id: uuid(),
+    image: "https://m.media-amazon.com/images/I/912u5Rc16fL._SL1500_.jpg",
+    title: "MSI MPG B550 Gaming Edge",
+    subTitle: "MSI",
+    description:
+      "MSI MPG B550 Gaming Edge WiFi AMD AM4 DDR4 M.2 USB 3.2 Gen 2 ATX Motherboard AMD Ryzen™ 5000 Series Desktop Processors",
+    price: 16500,
+    badge: false,
+    brandName: "MSI",
+    categoryName: "Motherboard",
+    alt: "Motherboard Img",
     inStock: true,
   },
 ];

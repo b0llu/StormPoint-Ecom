@@ -28,6 +28,7 @@ function App() {
           />
             < Route path='mockman' element={<MockAPI/>} />
         </Routes>
+        <Footer />
       </LandingContainer>
     </>
   );

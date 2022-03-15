@@ -36,7 +36,7 @@ const categoryFilter = (products, categories) => {
 const brandFilter = (products, brands) => {
   const filteredBrands = [];
 
-  if (Object.values(brands).every((value) => value === false)) {
+  if (Object.values(brands).every((value) => !value)) {
     return products;
   } else {
     for (const key in brands) {

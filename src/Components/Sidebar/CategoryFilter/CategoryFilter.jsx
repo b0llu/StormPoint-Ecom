@@ -28,9 +28,9 @@ export const CartegoryFilter = () => {
               <li key={category.id}>
                 <label className="form-label">
                   <input
-                    checked={categories[category.value]}
+                    checked={categories[category.value] ?? false}
                     value={category.value}
-                    onClick={(e) =>
+                    onChange={(e) =>
                       dispatch({
                         type: "CATEGORY_FILTER",
                         payload: e.target.value,

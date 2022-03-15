@@ -28,9 +28,9 @@ export const BrandFilter = () => {
               <li key={brand.id}>
                 <label className="form-label">
                   <input
-                    checked={brands[brand.value]}
+                    checked={brands[brand.value] ?? false}
                     value={brand.value}
-                    onClick={(e) =>
+                    onChange={(e) =>
                       dispatch({
                         type: "BRAND_FILTER",
                         payload: e.target.value,

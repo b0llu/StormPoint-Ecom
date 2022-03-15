@@ -33,7 +33,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         categories: {
-          ...state["categories"],
+          ...state.categories,
           [action.payload]: !state.categories[action.payload],
         },
       };
@@ -43,7 +43,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         brands: {
-          ...state["brands"],
+          ...state.brands,
           [action.payload]: !state.brands[action.payload],
         },
       };
@@ -76,26 +76,8 @@ export const reducer = (state, action) => {
         sidebar: false,
         sort: null,
         price: 100000,
-        categories: {
-          processor: false,
-          ram: false,
-          graphicsCard: false,
-          liquidCooler: false,
-          keyboardAndMouse: false,
-          speaker: false,
-          motherBoard: false,
-          cabinet: false,
-        },
-        brands: {
-          intel: false,
-          amd: false,
-          nvidia: false,
-          coolerMaster: false,
-          corsair: false,
-          logitech: false,
-          asus: false,
-          msi: false,
-        },
+        categories: {},
+        brands: {},
         outOfStock: true,
         products: state.products,
       };

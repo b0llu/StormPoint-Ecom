@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Loader } from "../../../../../Components";
 import { useFilterReducerContext } from "../../../../../context/FilterReducer.context";
+import { ProductPage } from "../../../../ProductPage/ProductPage";
 
 export const BrandSection = () => {
-  const { loading, dispatch } = useFilterReducerContext();
+  const { loading, brands, dispatch } = useFilterReducerContext();
 
   const [brandData, setBrandData] = useState([]);
 
@@ -25,10 +27,23 @@ export const BrandSection = () => {
       ) : (
         <>
           <div className="categories-section">
-            {brandData.map((brands) => {
+            {brandData.map((brand) => {
               return (
-                <div key={brands.id} className="category">
-                  <img className="rsp-img" src={brands.image} />
+                <div
+                  onClick={(e) =>
+                    dispatch({
+                      type: "BRAND_FILTER",
+                      payload: e.target.value,
+                    })
+                  }
+                  checked={brands[brand.value] ?? false}
+                  value={brand.value}
+                  key={brand.id}
+                  className="category"
+                >
+                  <Link to="/products" element={<ProductPage />}>
+                    <img className="rsp-img" src={brand.image} />
+                  </Link>
                 </div>
               );
             })}

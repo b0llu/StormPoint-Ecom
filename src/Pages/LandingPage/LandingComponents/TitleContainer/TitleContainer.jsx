@@ -9,13 +9,12 @@ export const TitleContainer = () => {
       <img
         className="hero-img"
         src="https://cdn.discordapp.com/attachments/470238446514995222/952524810385227786/hero-img.png"
-        alt=""
       />
       <div className="hero-section">
         <h1 className="name">Stormpoint</h1>
         <p>"Build Your Ultimate Setup"</p>
         <Link
-          to="/Products"
+          to="/products"
           element={
             <ProductContainer>
               <Sidebar />

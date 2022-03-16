@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Loader } from "../../../../Components";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 import { useFilterFunctionCombiner } from "../../../../Hook/useFilterFunctionCombiner";
+import { CartPage } from "../../../Cart/CartPage";
 import "./CardContainer.css";
 
 export const CardContainer = () => {
@@ -70,14 +72,16 @@ export const CardContainer = () => {
                   <button className="btn">Go To Cart</button>
                 ) : ( */}
                   {/* </Link> */}
-                  <button
-                    onClick={() =>
-                      dispatch({ type: "ADD_TO_CART", payload: products })
-                    }
-                    className="btn"
-                  >
-                    Add to Cart
-                  </button>
+                  <Link to="/cart" element={<CartPage />}>
+                    <button
+                      // onClick={() =>
+                      //   dispatch({ type: "ADD_TO_CART", payload: products })
+                      // }
+                      className="btn"
+                    >
+                      Add to Cart
+                    </button>
+                  </Link>
                   {/* )} */}
                 </div>
                 <div

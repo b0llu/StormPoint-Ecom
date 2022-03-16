@@ -6,6 +6,7 @@ import { LandingPage } from "../../Pages/LandingPage/LandingPage";
 // import { WishlistPage } from "../../WIshlist/WishlistPage";
 // import { CartPage } from "../../Cart/CartPage";
 import { useLocation } from "react-router-dom";
+import { CartPage } from "../../Pages/Cart/CartPage";
 
 export const Header = () => {
   // const { forLength } = useEcom();
@@ -20,7 +21,7 @@ export const Header = () => {
             <i className="fas fa-bolt"></i> Stormpoint
           </h1>
         </Link>
-        {currentPath.pathname === "/Products" && (
+        {currentPath.pathname === "/products" && (
           <input className="header-input" placeholder="Search" type="text" />
         )}
         <div className="margin-left-auto">
@@ -37,9 +38,9 @@ export const Header = () => {
               <div className="number">1</div>
             </div>
             <div className="badge">
-              {/* <Link to="/Cart" element={<CartPage />}> */}
+              <Link to="/cart" element={<CartPage />}>
               <i className="fas fa-shopping-cart"></i>
-              {/* </Link> */}
+              </Link>
               <div className="number">1</div>
             </div>
             <div className="badge">
@@ -48,7 +49,7 @@ export const Header = () => {
             <i id="toggle-theme" className="fas fa-moon icon"></i>
           </div>
         </div>
-        {currentPath.pathname === "/Products" && (
+        {currentPath.pathname === "/products" && (
           <input className="mobile-input" type="text" placeholder="Search" />
         )}
       </div>

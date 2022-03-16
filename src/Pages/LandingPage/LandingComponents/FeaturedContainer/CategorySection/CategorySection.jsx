@@ -10,10 +10,10 @@ export const CategorySection = () => {
 
   // initializing categories from data
   useEffect(() => {
-      (async function () {
-        const { data } = await axios.get("/api/categories");
-        setCategoryData(data.categories);
-      })();
+    (async function () {
+      const { data } = await axios.get("/api/categories");
+      setCategoryData(data.categories);
+    })();
   }, []);
 
   return (

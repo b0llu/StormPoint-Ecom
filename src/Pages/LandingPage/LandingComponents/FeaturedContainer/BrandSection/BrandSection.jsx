@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Loader } from "../../../../../Components";
-import { useReducerContext } from "../../../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../../../context/FilterReducer.context";
 
 export const BrandSection = () => {
-  const { loading, dispatch } = useReducerContext();
+  const { loading, dispatch } = useFilterReducerContext();
 
   const [brandData, setBrandData] = useState([]);
 

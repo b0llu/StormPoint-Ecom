@@ -1,23 +1,22 @@
 import "./Sidebar.css";
 import { FilterHeader } from "./FilterHeader/FilterHeader";
 import { SortFilter } from "./SortFilter/SortFilter";
-import { RatingFilter } from "./RatingFilter/RatingFilter";
+import { RatingFilter } from "./PriceFilter/PriceFilter";
 import { CartegoryFilter } from "./CategoryFilter/CategoryFilter";
 import { BrandFilter } from "./BrandFilter/BrandFilter";
 import { OtherFilter } from "./OtherFilter/OtherFilter";
-// import { useRoute } from "../../Context/useRoute";
+import { useFilterReducerContext } from "../../context/FilterReducer.context";
 
 export const Sidebar = () => {
-  // const { sidebar } = useRoute();
+  const { sidebar } = useFilterReducerContext();
 
   return (
     <aside>
       <div
         id="sidebar-menu"
-        className="sidebar stick position-hidden"
-        // className={`sidebar stick ${
-        //   sidebar ? "position-open" : "position-hidden"
-        // }`}
+        className={`sidebar stick ${
+          sidebar ? "position-open" : "position-hidden"
+        }`}
       >
         <FilterHeader />
         <ul className="list-style-none filter-section">

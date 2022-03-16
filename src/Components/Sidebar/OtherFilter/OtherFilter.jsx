@@ -1,7 +1,7 @@
-// import { useEcom } from "../../../Context/useEcomReducer.context";
+import { useFilterReducerContext } from "../../../context/FilterReducer.context";
 
 export const OtherFilter = () => {
-  // const { dispatch, outOfStock } = useEcom();
+  const { outOfStock, dispatch } = useFilterReducerContext();
   return (
     <>
       <li className="filter-section-title">Other</li>
@@ -9,8 +9,8 @@ export const OtherFilter = () => {
         <label className="form-label">
           <input
             type="checkbox"
-            // checked={outOfStock}
-            // onChange={() => dispatch({ type: "TOGGLE_STOCK" })}
+            checked={outOfStock}
+            onChange={() => dispatch({ type: "TOGGLE_STOCK" })}
           />
           Include out of stock
         </label>

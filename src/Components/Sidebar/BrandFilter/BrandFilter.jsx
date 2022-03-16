@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useReducerContext } from "../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../context/FilterReducer.context";
 import { Loader } from "../../Loader/Loader";
 
 export const BrandFilter = () => {
-  const { loading } = useReducerContext();
+  const { loading, brands, dispatch } = useFilterReducerContext();
 
   const [brandData, setBrandData] = useState([]);
 
   // initializing brands from data
   useEffect(() => {
-      (async function () {
-        const { data } = await axios.get("/api/brands");
-        setBrandData(data.brands);
-      })();
+    (async function () {
+      const { data } = await axios.get("/api/brands");
+      setBrandData(data.brands);
+    })();
   }, []);
 
   return (
@@ -23,12 +23,22 @@ export const BrandFilter = () => {
         <Loader />
       ) : (
         <>
-          {brandData.map((brands) => {
+          {brandData.map((brand) => {
             return (
-              <li key={brands.id}>
+              <li key={brand.id}>
                 <label className="form-label">
-                  <input type="checkbox" />
-                  {brands.brandName}
+                  <input
+                    checked={brands[brand.value] ?? false}
+                    value={brand.value}
+                    onChange={(e) =>
+                      dispatch({
+                        type: "BRAND_FILTER",
+                        payload: e.target.value,
+                      })
+                    }
+                    type="checkbox"
+                  />
+                  {brand.brandName}
                 </label>
               </li>
             );

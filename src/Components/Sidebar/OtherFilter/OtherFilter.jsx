@@ -1,7 +1,7 @@
-import { useReducerContext } from "../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../context/useFilterReducer.context";
 
 export const OtherFilter = () => {
-  const { outOfStock, dispatch } = useReducerContext();
+  const { outOfStock, dispatch } = useFilterReducerContext();
   return (
     <>
       <li className="filter-section-title">Other</li>

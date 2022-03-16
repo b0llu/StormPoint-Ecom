@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { ReducerProvider } from "./context/useReducer.context";
+import { FilterReducerProvider } from "./context/useFilterReducer.context";
 import { useSignUp } from "./Hook/useSignUp";
 
 // Call make Server
@@ -13,9 +13,9 @@ useSignUp();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <ReducerProvider>
+      <FilterReducerProvider>
         <App />
-      </ReducerProvider>
+      </FilterReducerProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

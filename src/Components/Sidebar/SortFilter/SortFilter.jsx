@@ -1,7 +1,7 @@
-import { useReducerContext } from "../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../context/useFilterReducer.context";
 
 export const SortFilter = () => {
-  const { sort, dispatch } = useReducerContext();
+  const { sort, dispatch } = useFilterReducerContext();
 
   return (
     <>

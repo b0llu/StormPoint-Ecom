@@ -1,15 +1,13 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Loader } from "../../../../Components";
-import { useReducerContext } from "../../../../context/useReducer.context";
-import { useFunctionCombiner } from "../../../../Hook/useFunctionCombiner";
+import { useFilterReducerContext } from "../../../../context/useFilterReducer.context";
+import { useFilterFunctionCombiner } from "../../../../Hook/useFilterFunctionCombiner";
 import "./CardContainer.css";
-// import { Link } from "react-router-dom";
-// import { CartPage } from "../../../Cart/CartPage";
 
 export const CardContainer = () => {
-  const { sortedProducts } = useFunctionCombiner();
-  const { loading, dispatch } = useReducerContext();
+  const { sortedProducts } = useFilterFunctionCombiner();
+  const { loading, dispatch } = useFilterReducerContext();
   // initializing products from data
   useEffect(() => {
     dispatch({ type: "LOADING" }),

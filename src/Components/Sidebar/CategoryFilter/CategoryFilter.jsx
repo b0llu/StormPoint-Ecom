@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useReducerContext } from "../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../context/useFilterReducer.context";
 import { Loader } from "../../Loader/Loader";
 
 export const CartegoryFilter = () => {
-  const { loading, categories, dispatch } = useReducerContext();
+  const { loading, categories, dispatch } = useFilterReducerContext();
 
   const [categoryData, setCategoryData] = useState([]);
 

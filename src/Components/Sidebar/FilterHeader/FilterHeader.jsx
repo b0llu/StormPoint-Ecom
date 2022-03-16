@@ -1,7 +1,7 @@
-import { useReducerContext } from "../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../context/useFilterReducer.context";
 
 export const FilterHeader = () => {
-  const { sidebar, dispatch } = useReducerContext();
+  const { sidebar, dispatch } = useFilterReducerContext();
 
   return (
     <div className="title-of-filter">

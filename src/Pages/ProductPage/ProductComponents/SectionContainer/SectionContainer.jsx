@@ -1,8 +1,8 @@
-import { useReducerContext } from "../../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../../context/useFilterReducer.context";
 import "./SectionContainer.css";
 
 export const SectionContainer = ({ children }) => {
-  const { dispatch } = useReducerContext();
+  const { dispatch } = useFilterReducerContext();
 
   return (
     <section>

@@ -1,7 +1,7 @@
-import { useReducerContext } from "../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../context/useFilterReducer.context";
 
 export const RatingFilter = () => {
-  const { price, dispatch } = useReducerContext();
+  const { price, dispatch } = useFilterReducerContext();
 
   return (
     <>

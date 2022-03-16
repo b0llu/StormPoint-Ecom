@@ -1,9 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
 import { reducer } from "../reducer/reducer";
 
-const ReducerContext = createContext();
+const FilterReducerContext = createContext();
 
-const ReducerProvider = ({ children }) => {
+const FilterReducerProvider = ({ children }) => {
   const [
     { loading, sidebar, sort, price, categories, brands, outOfStock, products },
     dispatch,
@@ -19,7 +19,7 @@ const ReducerProvider = ({ children }) => {
   });
 
   return (
-    <ReducerContext.Provider
+    <FilterReducerContext.Provider
       value={{
         loading,
         sidebar,
@@ -33,10 +33,10 @@ const ReducerProvider = ({ children }) => {
       }}
     >
       {children}
-    </ReducerContext.Provider>
+    </FilterReducerContext.Provider>
   );
 };
 
-const useReducerContext = () => useContext(ReducerContext);
+const useFilterReducerContext = () => useContext(FilterReducerContext);
 
-export { useReducerContext, ReducerProvider };
+export { useFilterReducerContext, FilterReducerProvider };

@@ -5,10 +5,10 @@ import { RatingFilter } from "./PriceFilter/PriceFilter";
 import { CartegoryFilter } from "./CategoryFilter/CategoryFilter";
 import { BrandFilter } from "./BrandFilter/BrandFilter";
 import { OtherFilter } from "./OtherFilter/OtherFilter";
-import { useReducerContext } from "../../context/useReducer.context";
+import { useFilterReducerContext } from "../../context/useFilterReducer.context";
 
 export const Sidebar = () => {
-  const { sidebar } = useReducerContext();
+  const { sidebar } = useFilterReducerContext();
 
   return (
     <aside>

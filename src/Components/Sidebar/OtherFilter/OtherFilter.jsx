@@ -1,4 +1,4 @@
-import { useFilterReducerContext } from "../../../context/useFilterReducer.context";
+import { useFilterReducerContext } from "../../../context/FilterReducer.context";
 
 export const OtherFilter = () => {
   const { outOfStock, dispatch } = useFilterReducerContext();

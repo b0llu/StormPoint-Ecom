@@ -5,7 +5,7 @@ import { RatingFilter } from "./PriceFilter/PriceFilter";
 import { CartegoryFilter } from "./CategoryFilter/CategoryFilter";
 import { BrandFilter } from "./BrandFilter/BrandFilter";
 import { OtherFilter } from "./OtherFilter/OtherFilter";
-import { useFilterReducerContext } from "../../context/useFilterReducer.context";
+import { useFilterReducerContext } from "../../context/FilterReducer.context";
 
 export const Sidebar = () => {
   const { sidebar } = useFilterReducerContext();

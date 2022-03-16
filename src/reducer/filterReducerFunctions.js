@@ -17,7 +17,7 @@ const getSortedProducts = (products, sort) => {
 const categoryFilter = (products, categories) => {
   const filteredCategories = [];
 
-  if (Object.values(categories).every((value) => value === false)) {
+  if (Object.values(categories).every((value) => !value)) {
     return products;
   } else {
     for (const key in categories) {

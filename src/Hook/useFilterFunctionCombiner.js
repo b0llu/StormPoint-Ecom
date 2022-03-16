@@ -1,4 +1,4 @@
-import { useFilterReducerContext } from "../context/useFilterReducer.context";
+import { useFilterReducerContext } from "../context/FilterReducer.context";
 import {
   getSortedProducts,
   priceRangeSorter,
@@ -8,7 +8,7 @@ import {
 } from "../reducer/filterReducerFunctions";
 
 export const useFilterFunctionCombiner = () => {
-  const { sort, price, categories, brands, outOfStock, products } =
+  const { sort, price, categories, brands, products, outOfStock } =
     useFilterReducerContext();
 
   const priceRangeSort = priceRangeSorter(products, price);

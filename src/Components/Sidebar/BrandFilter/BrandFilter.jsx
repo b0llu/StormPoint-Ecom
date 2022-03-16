@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useFilterReducerContext } from "../../../context/useFilterReducer.context";
+import { useFilterReducerContext } from "../../../context/FilterReducer.context";
 import { Loader } from "../../Loader/Loader";
 
 export const BrandFilter = () => {

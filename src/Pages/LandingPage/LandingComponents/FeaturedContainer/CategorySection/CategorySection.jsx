@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Loader } from "../../../../../Components";
-import { useFilterReducerContext } from "../../../../../context/useFilterReducer.context";
+import { useFilterReducerContext } from "../../../../../context/FilterReducer.context";
 
 export const CategorySection = () => {
   const { loading, dispatch } = useFilterReducerContext();

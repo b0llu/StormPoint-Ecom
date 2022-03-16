@@ -5,7 +5,17 @@ const FilterReducerContext = createContext();
 
 const FilterReducerProvider = ({ children }) => {
   const [
-    { loading, sidebar, sort, price, categories, brands, outOfStock, products },
+    {
+      loading,
+      sidebar,
+      sort,
+      price,
+      categories,
+      brands,
+      forToast,
+      products,
+      outOfStock,
+    },
     dispatch,
   ] = useReducer(reducer, {
     loading: false,
@@ -15,6 +25,7 @@ const FilterReducerProvider = ({ children }) => {
     categories: {},
     brands: {},
     outOfStock: true,
+    forToast: { text: "", trigger: false, selector: "" },
     products: [],
   });
 
@@ -24,11 +35,12 @@ const FilterReducerProvider = ({ children }) => {
         loading,
         sidebar,
         sort,
-        products,
         price,
         categories,
         brands,
         outOfStock,
+        forToast,
+        products,
         dispatch,
       }}
     >

@@ -22,12 +22,10 @@
 
 .close {
     transform: translateX(150%);
-    transition: 0.2s ease-in-out;
 }
 
 .open {
     transform: translateX(0);
-    transition: 0.2s ease-in-out;
 }
 
 @media screen and (max-width: 850px) {

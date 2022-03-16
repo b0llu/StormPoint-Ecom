@@ -2,8 +2,10 @@ import "./TitleContainer.css";
 import { Link } from "react-router-dom";
 import { ProductContainer, Sidebar } from "../../../../Components";
 import { ProductPage } from "../../../ProductPage/ProductPage";
+import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 
 export const TitleContainer = () => {
+  const { dispatch } = useFilterReducerContext();
   return (
     <div className="title-container">
       <img
@@ -22,7 +24,12 @@ export const TitleContainer = () => {
             </ProductContainer>
           }
         >
-          <button className="btn primary-btn">Shop Now</button>
+          <button
+            onClick={() => dispatch({ type: "RESET" })}
+            className="btn primary-btn"
+          >
+            Shop Now
+          </button>
         </Link>
       </div>
     </div>

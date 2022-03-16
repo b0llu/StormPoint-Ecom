@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "../../../../Components";
+import { useCartContext } from "../../../../context/Cart.context";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 import { useFilterFunctionCombiner } from "../../../../Hook/useFilterFunctionCombiner";
 import { CartPage } from "../../../Cart/CartPage";
@@ -10,14 +11,19 @@ import "./CardContainer.css";
 export const CardContainer = () => {
   const { sortedProducts } = useFilterFunctionCombiner();
   const { loading, dispatch } = useFilterReducerContext();
+  const { cartProducts, addToCart } = useCartContext();
 
   // initializing products from data
   useEffect(() => {
     dispatch({ type: "LOADING" }),
       (async function () {
-        const { data } = await axios.get("./api/products");
-        dispatch({ type: "INITIALIZE_PRODUCTS", payload: data.products });
-        dispatch({ type: "LOADING" });
+        try {
+          const { data } = await axios.get("./api/products");
+          dispatch({ type: "INITIALIZE_PRODUCTS", payload: data.products });
+          dispatch({ type: "LOADING" });
+        } catch (err) {
+          console.log(err);
+        }
       })();
   }, []);
 
@@ -27,65 +33,63 @@ export const CardContainer = () => {
         <Loader />
       ) : (
         <>
-          {sortedProducts.map((products) => {
+          {sortedProducts.map((product) => {
             return (
               <div
-                key={products.id}
+                key={product.id}
                 className="card-container product-card card-shadow"
               >
                 <div className="product-img">
                   <img
                     className="card-img"
-                    src={products.image}
-                    alt={products.alt}
+                    src={product.image}
+                    alt={product.alt}
                   />
                 </div>
-                {products.badge && (
-                  <h6 className="card-badge">{products.badge}</h6>
+                {product.badge && (
+                  <h6 className="card-badge">{product.badge}</h6>
                 )}
-                {/* {wishlist.some((item) => item.id === products.id) ? (
+                {/* {wishlist.some((item) => item.id === product.id) ? (
                 <h1
                   onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_WISHLIST", payload: products })
+                    dispatch({ type: "REMOVE_FROM_WISHLIST", payload: product })
                   }
                   className="card-subtitle"
                 >
-                  {products.title} <i className="fas fa-heart fav-added"></i>
+                  {product.title} <i className="fas fa-heart fav-added"></i>
                 </h1>
               ) : ( */}
                 <h1
                   onClick={() =>
-                    dispatch({ type: "ADD_TO_WISHLIST", payload: products })
+                    dispatch({ type: "ADD_TO_WISHLIST", payload: product })
                   }
                   className="card-subtitle"
                 >
-                  {products.title} <i className="fas fa-heart"></i>
+                  {product.title} <i className="fas fa-heart"></i>
                 </h1>
                 {/* )} */}
 
-                <h2 className="card-title">Brand : {products.subTitle}</h2>
-                <p className="card-description">{products.description}</p>
-                <p className="card-description">Price: ₹{products.price}</p>
+                <h2 className="card-title">Brand : {product.subTitle}</h2>
+                <p className="card-description">{product.description}</p>
+                <p className="card-description">Price: ₹{product.price}</p>
                 <div className="card-btn">
-                  {/* {cart.some((item) => item.id === products.id) ? (
-                  <Link to="/Cart" element={<CartPage />}>
-                  <button className="btn">Go To Cart</button>
-                ) : ( */}
-                  {/* </Link> */}
-                  <Link to="/cart" element={<CartPage />}>
+                  {cartProducts.some((item) => item.id === product.id) ? (
+                    <Link to="/Cart" element={<CartPage />}>
+                      <button className="btn">Go To Cart</button>
+                    </Link>
+                  ) : (
                     <button
-                      // onClick={() =>
-                      //   dispatch({ type: "ADD_TO_CART", payload: products })
-                      // }
+                      onClick={() => {
+                        addToCart(product);
+                      }}
                       className="btn"
                     >
                       Add to Cart
                     </button>
-                  </Link>
-                  {/* )} */}
+                  )}
                 </div>
                 <div
-                  className={` ${products.inStock ? "hidden" : "out-of-stock"}`}
+                  className={` ${product.inStock ? "hidden" : "out-of-stock"}`}
                 >
                   <span>Out Of Stock</span>
                 </div>

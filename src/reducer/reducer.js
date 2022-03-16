@@ -1,4 +1,16 @@
 export const reducer = (state, action) => {
+  const initialState = {
+    loading: false,
+    sidebar: false,
+    sort: null,
+    price: 100000,
+    categories: {},
+    brands: {},
+    outOfStock: true,
+    forToast: { text: "", trigger: false, selector: "" },
+    products: state.products,
+  };
+
   switch (action.type) {
     // loading case
     case "LOADING":
@@ -19,6 +31,13 @@ export const reducer = (state, action) => {
       return {
         ...state,
         products: action.payload,
+      };
+
+    // storing cart
+    case "INITIALIZE_CART":
+      return {
+        ...state,
+        cart: [...state.cart],
       };
 
     // slider sorting
@@ -69,18 +88,50 @@ export const reducer = (state, action) => {
         sort: "Low-to-High",
       };
 
+    // add to cart
+    case "ADD_TO_CART":
+      console.log(state.cart);
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
+      };
+
+    // success toast
+    case "SUCCESS_TOAST":
+      return {
+        ...state,
+        forToast: {
+          text: action.payload,
+          trigger: !state.forToast.trigger,
+          selector: "success",
+        },
+      };
+
+    // error toast
+    case "ERROR_TOAST":
+      return {
+        ...state,
+        forToast: {
+          text: action.payload,
+          trigger: !state.forToast.trigger,
+          selector: "error",
+        },
+      };
+
+    // toast state handler
+    case "TOAST_STATE_CLEAN":
+      return {
+        ...state,
+        forToast: {
+          text: "",
+          trigger: false,
+          selector: "",
+        },
+      };
+
     // reset
     case "RESET":
-      return {
-        loading: false,
-        sidebar: false,
-        sort: null,
-        price: 100000,
-        categories: {},
-        brands: {},
-        outOfStock: true,
-        products: state.products,
-      };
+      return initialState;
 
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

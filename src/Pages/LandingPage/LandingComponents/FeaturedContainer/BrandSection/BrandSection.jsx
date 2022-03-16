@@ -41,7 +41,10 @@ export const BrandSection = () => {
                   key={brand.id}
                   className="category"
                 >
-                  <Link to="/products" element={<ProductPage />}>
+                  <Link
+                    to={`/products#${brand.value}`}
+                    element={<ProductPage />}
+                  >
                     <img className="rsp-img" src={brand.image} />
                   </Link>
                 </div>

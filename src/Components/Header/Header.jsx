@@ -1,16 +1,12 @@
 import "./Header.css";
-// import { useEcom } from "../../Context/useEcomReducer.context";
 import { Link } from "react-router-dom";
 import { LandingPage } from "../../Pages/LandingPage/LandingPage";
-// import { ProfilePage } from "../../Profile/ProfilePage";
-// import { WishlistPage } from "../../WIshlist/WishlistPage";
-// import { CartPage } from "../../Cart/CartPage";
 import { useLocation } from "react-router-dom";
 import { CartPage } from "../../Pages/Cart/CartPage";
+import { useCartContext } from "../../context/Cart.context";
 
 export const Header = () => {
-  // const { forLength } = useEcom();
-
+  const { cartProducts } = useCartContext()
   const currentPath = useLocation();
 
   return (
@@ -39,9 +35,9 @@ export const Header = () => {
             </div>
             <div className="badge">
               <Link to="/cart" element={<CartPage />}>
-              <i className="fas fa-shopping-cart"></i>
+                <i className="fas fa-shopping-cart"></i>
               </Link>
-              <div className="number">1</div>
+              <div className="number">{cartProducts.length}</div>
             </div>
             <div className="badge">
               <i className="fas fa-sign-out"></i>

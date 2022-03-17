@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route
-            path="/Products"
+            path="/products"
             element={
               <ProductContainer>
                 <Sidebar />
@@ -28,6 +28,7 @@ function App() {
           />
             < Route path='mockman' element={<MockAPI/>} />
         </Routes>
+        <Footer />
       </LandingContainer>
     </>
   );

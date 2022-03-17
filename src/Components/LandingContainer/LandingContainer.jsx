@@ -1,10 +1,11 @@
-// import { useRoute } from "../../Context/useRoute";
+import { useFilterReducerContext } from "../../context/FilterReducer.context";
 import "./LandingContainer.css";
 
 export const LandingContainer = ({ children }) => {
-  // const { sidebar } = useRoute();
+  const { sidebar } = useFilterReducerContext();
   return (
-    // <section className={`landing-container ${sidebar ? "position-fixed" : ""}`}>
-    <section className="landing-container">{children}</section>
+    <section className={`landing-container ${sidebar ? "position-fixed" : ""}`}>
+      {children}
+    </section>
   );
 };

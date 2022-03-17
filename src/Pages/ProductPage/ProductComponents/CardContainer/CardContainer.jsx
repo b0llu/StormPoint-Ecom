@@ -1,18 +1,13 @@
-// import { useEcom } from "../../../Context/useEcomReducer.context";
-// import { useRoute } from "../../../Context/useRoute";
-// import Combiner from "../../../Reducer/reducerCombiner";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Loader } from "../../../../Components";
-import { useReducerContext } from "../../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
+import { useFilterFunctionCombiner } from "../../../../Hook/useFilterFunctionCombiner";
 import "./CardContainer.css";
-// import { Link } from "react-router-dom";
-// import { CartPage } from "../../../Cart/CartPage";
 
 export const CardContainer = () => {
-  // const { cart, wishlist, dispatch } = useEcom();
-  // const { priceRange } = Combiner();
-  const { loading, products, dispatch } = useReducerContext();
+  const { sortedProducts } = useFilterFunctionCombiner();
+  const { loading, dispatch } = useFilterReducerContext();
 
   // initializing products from data
   useEffect(() => {
@@ -30,7 +25,7 @@ export const CardContainer = () => {
         <Loader />
       ) : (
         <>
-          {products.map((products) => {
+          {sortedProducts.map((products) => {
             return (
               <div
                 key={products.id}

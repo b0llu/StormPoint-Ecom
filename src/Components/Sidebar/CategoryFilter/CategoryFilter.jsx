@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useReducerContext } from "../../../context/useReducer.context";
+import { useFilterReducerContext } from "../../../context/FilterReducer.context";
 import { Loader } from "../../Loader/Loader";
 
 export const CartegoryFilter = () => {
-  const { loading } = useReducerContext();
+  const { loading, categories, dispatch } = useFilterReducerContext();
 
   const [categoryData, setCategoryData] = useState([]);
 
@@ -27,7 +27,17 @@ export const CartegoryFilter = () => {
             return (
               <li key={category.id}>
                 <label className="form-label">
-                  <input type="checkbox" />
+                  <input
+                    checked={categories[category.value] ?? false}
+                    value={category.value}
+                    onChange={(e) =>
+                      dispatch({
+                        type: "CATEGORY_FILTER",
+                        payload: e.target.value,
+                      })
+                    }
+                    type="checkbox"
+                  />
                   {category.categoryName}
                 </label>
               </li>

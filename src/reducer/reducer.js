@@ -1,7 +1,6 @@
 import { useCartContext } from "../context/Cart.context";
 
 export const reducer = (state, action) => {
-
   const initialState = {
     loading: false,
     sidebar: false,
@@ -10,6 +9,7 @@ export const reducer = (state, action) => {
     categories: {},
     brands: {},
     outOfStock: true,
+    searchTerm: '',
     forToast: { text: "", trigger: false, selector: "" },
     products: state.products,
   };
@@ -129,6 +129,13 @@ export const reducer = (state, action) => {
           trigger: false,
           selector: "",
         },
+      };
+
+    // search bar
+    case "SEARCH_BAR":
+      return {
+        ...state,
+        searchTerm: action.payload,
       };
 
     // reset

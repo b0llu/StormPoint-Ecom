@@ -4,11 +4,12 @@ import {
   priceRangeSorter,
   categoryFilter,
   brandFilter,
+  searchBarHandler,
   outOfStockFilter,
 } from "../reducer/filterReducerFunctions";
 
 export const useFilterFunctionCombiner = () => {
-  const { sort, price, categories, brands, products, outOfStock } =
+  const { sort, price, categories, brands, products, searchTerm, outOfStock } =
     useFilterReducerContext();
 
   const priceRangeSort = priceRangeSorter(products, price);
@@ -19,7 +20,9 @@ export const useFilterFunctionCombiner = () => {
 
   const outOfStockFilters = outOfStockFilter(brandFilters, outOfStock);
 
-  const sortedProducts = getSortedProducts(outOfStockFilters, sort);
+  const searchBarHandle = searchBarHandler(outOfStockFilters, searchTerm);
+
+  const sortedProducts = getSortedProducts(searchBarHandle, sort);
 
   return { sortedProducts };
 };

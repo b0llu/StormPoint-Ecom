@@ -13,6 +13,7 @@ const FilterReducerProvider = ({ children }) => {
       categories,
       brands,
       forToast,
+      searchTerm,
       products,
       outOfStock,
     },
@@ -26,6 +27,7 @@ const FilterReducerProvider = ({ children }) => {
     brands: {},
     outOfStock: true,
     forToast: { text: "", trigger: false, selector: "" },
+    searchTerm: "",
     products: [],
   });
 
@@ -39,6 +41,7 @@ const FilterReducerProvider = ({ children }) => {
         categories,
         brands,
         outOfStock,
+        searchTerm,
         forToast,
         products,
         dispatch,

@@ -37,9 +37,7 @@ const CartProvider = ({ children }) => {
         },
       });
       if (response.status === 200) {
-        setCartProducts((oldProducts) => {
-          return oldProducts.filter((obj) => obj.id !== item.id);
-        });
+        setCartProducts(response.data.cart);
         dispatch({ type: "ERROR_TOAST", payload: "Removed from Cart" });
       }
     } catch (err) {

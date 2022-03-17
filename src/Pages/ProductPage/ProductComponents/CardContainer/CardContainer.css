@@ -9,6 +9,12 @@
 
 .product-card .card-badge {
   font-size: 2rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.color-green {
+  color: var(--success-color);
 }
 
 .disable {
@@ -33,18 +39,33 @@
 
 .card-container .card-title {
   font-size: 2rem;
+  font-weight: 500;
 }
 
 .product-card .card-subtitle {
   pointer-events: all;
 }
 
+.product-card .fav-add {
+  color: var(--heart-hover);
+  cursor: pointer;
+  font-size: 2.5rem;
+}
+
+.product-card .fav-add:hover {
+  color: var(--alert-color);
+  transition: 0.2s ease-in-out;
+}
+
 .product-card .fav-added {
-    color: var(--alert-color);
+  color: var(--alert-color);
+  cursor: pointer;
+  font-size: 2.5rem;
 }
 
 .product-card .fav-added:hover {
-    color: var(--heart-hover);
+  color: var(--heart-hover);
+  transition: 0.2s ease-in-out;
 }
 
 .product-card .card-btn .btn {
@@ -52,21 +73,21 @@
 }
 
 .out-of-stock {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: gray;
-    display: grid;
-    place-items: center;
-    opacity: 0.9;
-    color: white;
-    font-size: 5rem;
-    font-weight: bold;
-    border-radius: 0.5rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  display: grid;
+  place-items: center;
+  opacity: 0.9;
+  color: white;
+  font-size: 5rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 1300px) {
@@ -77,6 +98,26 @@
   }
 
   .out-of-stock {
-      font-size: 4rem;
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .card-container.product-card {
+    width: 20rem;
+    min-height: 40rem;
+  }
+
+  .product-img {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  .card-description {
+    display: none;
+  }
+
+  .out-of-stock {
+    font-size: 3rem;
   }
 }

@@ -57,22 +57,26 @@ export const CardContainer = () => {
                     onClick={() => removeFromWishlist(product)}
                     className="card-subtitle"
                   >
-                    {product.title} <i className="fas fa-heart fav-added"></i>
+                    {product.title}{" "}
+                    <span className="material-icons fav-added">favorite</span>
                   </h1>
                 ) : (
                   <h1
                     onClick={() => {
                       addToWishlist(product);
                     }}
-                    className="card-subtitle"
+                    className="card-title"
                   >
-                    {product.title} <i className="fas fa-heart"></i>
+                    {product.title}{" "}
+                    <span className="material-icons fav-add">favorite</span>
                   </h1>
                 )}
 
                 <h2 className="card-title">Brand : {product.subTitle}</h2>
                 <p className="card-description">{product.description}</p>
-                <p className="card-description">Price: ₹{product.price}</p>
+                <p className="card-subtitle">
+                  Price: <span className="color-green">₹{product.price}</span>{" "}
+                </p>
                 <div className="card-btn">
                   {cartProducts.some((item) => item.id === product.id) ? (
                     <Link to="/Cart" element={<CartPage />}>
@@ -83,7 +87,7 @@ export const CardContainer = () => {
                       onClick={() => {
                         addToCart(product);
                       }}
-                      className="btn"
+                      className="btn add-to-cart"
                     >
                       Add to Cart
                     </button>

@@ -37,6 +37,7 @@ export const BrandFilter = () => {
               <li key={brand.id}>
                 <label className="form-label">
                   <input
+                    className="checkbox-input"
                     checked={brands[brand.value] ?? false}
                     value={brand.value}
                     onChange={(e) =>

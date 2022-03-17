@@ -32,7 +32,8 @@ export const CartCard = () => {
                 onClick={() => removeFromWishlist(products)}
                 className="card-subtitle"
               >
-                {products.title} <i className="fas fa-heart fav-added"></i>
+                {products.title}{" "}
+                <span className="material-icons fav-added">favorite</span>
               </h1>
             ) : (
               <h1
@@ -41,7 +42,8 @@ export const CartCard = () => {
                 }}
                 className="card-subtitle"
               >
-                {products.title} <i className="fas fa-heart"></i>
+                {products.title}{" "}
+                <span className="material-icons fav-add">favorite</span>
               </h1>
             )}
             <h2 className="card-title">Brand : {products.subTitle}</h2>

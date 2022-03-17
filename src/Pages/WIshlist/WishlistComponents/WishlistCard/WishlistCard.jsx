@@ -31,7 +31,7 @@ export const WishlistCard = () => {
               className="card-subtitle"
             >
               {products.title}
-              <i className="fas fa-heart fav-added"></i>
+              <span className="material-icons fav-added">favorite</span>
             </h1>
             <h2 className="card-title">Brand : {products.subTitle}</h2>
             <p className="card-description">{products.description}</p>

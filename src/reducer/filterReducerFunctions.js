@@ -54,6 +54,17 @@ const outOfStockFilter = (products, outOfStock) => {
   return outOfStock ? products : products.filter((items) => items.inStock);
 };
 
+// search bar
+const searchBarHandler = (products, searchTerm) => {
+  return products.filter((value) => {
+    if (searchTerm === "") {
+      return value;
+    } else if (value.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+      return value;
+    }
+  });
+};
+
 // price range sorter
 const priceRangeSorter = (products, price) => {
   return products.filter((item) => item.price <= price);
@@ -64,5 +75,6 @@ export {
   priceRangeSorter,
   categoryFilter,
   outOfStockFilter,
+  searchBarHandler,
   brandFilter,
 };

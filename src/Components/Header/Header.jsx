@@ -1,15 +1,12 @@
 import "./Header.css";
-// import { useEcom } from "../../Context/useEcomReducer.context";
 import { Link } from "react-router-dom";
 import { LandingPage } from "../../Pages/LandingPage/LandingPage";
-// import { ProfilePage } from "../../Profile/ProfilePage";
-// import { WishlistPage } from "../../WIshlist/WishlistPage";
-// import { CartPage } from "../../Cart/CartPage";
 import { useLocation } from "react-router-dom";
+import { CartPage } from "../../Pages/Cart/CartPage";
+import { useCartContext } from "../../context/Cart.context";
 
 export const Header = () => {
-  // const { forLength } = useEcom();
-
+  const { cartProducts } = useCartContext();
   const currentPath = useLocation();
 
   return (
@@ -20,7 +17,7 @@ export const Header = () => {
             <i className="fas fa-bolt"></i> Stormpoint
           </h1>
         </Link>
-        {currentPath.pathname === "/Products" && (
+        {currentPath.pathname === "/products" && (
           <input className="header-input" placeholder="Search" type="text" />
         )}
         <div className="margin-left-auto">
@@ -37,10 +34,12 @@ export const Header = () => {
               <div className="number">1</div>
             </div>
             <div className="badge">
-              {/* <Link to="/Cart" element={<CartPage />}> */}
-              <i className="fas fa-shopping-cart"></i>
-              {/* </Link> */}
-              <div className="number">1</div>
+              <Link to="/cart" element={<CartPage />}>
+                <i className="fas fa-shopping-cart"></i>
+              </Link>
+              {cartProducts.length === 0 ? null : (
+                <div className="number">{cartProducts.length}</div>
+              )}
             </div>
             <div className="badge">
               <i className="fas fa-sign-out"></i>
@@ -48,7 +47,7 @@ export const Header = () => {
             <i id="toggle-theme" className="fas fa-moon icon"></i>
           </div>
         </div>
-        {currentPath.pathname === "/Products" && (
+        {currentPath.pathname === "/products" && (
           <input className="mobile-input" type="text" placeholder="Search" />
         )}
       </div>

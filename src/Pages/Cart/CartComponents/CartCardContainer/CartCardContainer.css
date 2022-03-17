@@ -1,0 +1,17 @@
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--content-color);
+  align-self: center;
+}
+
+section {
+  grid-area: contentarea;
+}
+
+.item-showcase-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

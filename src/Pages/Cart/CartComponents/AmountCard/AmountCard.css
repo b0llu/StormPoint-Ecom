@@ -1,0 +1,58 @@
+:root {
+    --secondary-btn-color: #B7BBB4;
+    --secondary-btn-color-hover: #D0D4CD;
+    --order-btn: #339637;
+    --heart-hover: #b6bab3;
+}
+
+.amount-container .card-container {
+    width: 50rem;
+    margin-top: 2rem;
+}
+
+.amount-container .card-container .btn {
+    width: auto;
+    background-color: var(--success-color);
+    border: none;
+    height: 5rem;
+}
+
+.amount-container .card-container .btn:hover {
+    background-color: var(--order-btn);
+    transition: 0.2s ease-in-out;
+}
+
+.amount-container h2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+    .amount-container {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--content-color);
+    }
+
+    .item-showcase-container {
+        flex-direction: column-reverse;
+    }
+
+    .amount-container {
+        align-self: center;
+    }
+
+    .item-showcase-container .section-container {
+        border-right: 0px;
+        padding-right: 0;
+    }
+
+    .amount-container.stick {
+        position: initial;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .amount-container .card-container {
+        width: 40rem;
+    }
+}

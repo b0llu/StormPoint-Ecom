@@ -1,0 +1,48 @@
+:root {
+    --secondary-btn-color: #B7BBB4;
+    --secondary-btn-color-hover: #D0D4CD;
+    --order-btn: #339637;
+}
+
+.product-card .card-btn .btn.for-cart {
+    background-color: var(--secondary-btn-color);
+}
+
+.product-card .card-btn .btn.for-cart:hover {
+    background-color: var(--secondary-btn-color-hover);
+    transition: 0.2s ease-in-out;
+}
+
+.search-categories {
+    font-size: 1.3rem;
+    margin: 0 10px;
+    padding: 10px 8px 10px 1.4rem;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.search-categories .select {
+    width: 80%;
+}
+
+.search-categories .select select {
+    background: transparent;
+    line-height: 1;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.search-categories .select select:focus {
+    outline: none;
+}

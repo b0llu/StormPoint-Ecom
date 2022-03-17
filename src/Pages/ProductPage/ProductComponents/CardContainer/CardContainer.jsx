@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Loader } from "../../../../Components";
 import { useCartContext } from "../../../../context/Cart.context";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
+import { useWishlistContext } from "../../../../context/Wishlist.context";
 import { useFilterFunctionCombiner } from "../../../../Hook/useFilterFunctionCombiner";
 import { CartPage } from "../../../Cart/CartPage";
 import "./CardContainer.css";
@@ -12,6 +13,8 @@ export const CardContainer = () => {
   const { sortedProducts } = useFilterFunctionCombiner();
   const { loading, dispatch } = useFilterReducerContext();
   const { cartProducts, addToCart } = useCartContext();
+  const { wishlistProducts, addToWishlist, removeFromWishlist } =
+    useWishlistContext();
 
   // initializing products from data
   useEffect(() => {
@@ -49,25 +52,23 @@ export const CardContainer = () => {
                 {product.badge && (
                   <h6 className="card-badge">{product.badge}</h6>
                 )}
-                {/* {wishlist.some((item) => item.id === product.id) ? (
-                <h1
-                  onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_WISHLIST", payload: product })
-                  }
-                  className="card-subtitle"
-                >
-                  {product.title} <i className="fas fa-heart fav-added"></i>
-                </h1>
-              ) : ( */}
-                <h1
-                  onClick={() =>
-                    dispatch({ type: "ADD_TO_WISHLIST", payload: product })
-                  }
-                  className="card-subtitle"
-                >
-                  {product.title} <i className="fas fa-heart"></i>
-                </h1>
-                {/* )} */}
+                {wishlistProducts.some((item) => item.id === product.id) ? (
+                  <h1
+                    onClick={() => removeFromWishlist(product)}
+                    className="card-subtitle"
+                  >
+                    {product.title} <i className="fas fa-heart fav-added"></i>
+                  </h1>
+                ) : (
+                  <h1
+                    onClick={() => {
+                      addToWishlist(product);
+                    }}
+                    className="card-subtitle"
+                  >
+                    {product.title} <i className="fas fa-heart"></i>
+                  </h1>
+                )}
 
                 <h2 className="card-title">Brand : {product.subTitle}</h2>
                 <p className="card-description">{product.description}</p>

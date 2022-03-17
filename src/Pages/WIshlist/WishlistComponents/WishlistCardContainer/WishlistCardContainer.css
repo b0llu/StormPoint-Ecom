@@ -1,0 +1,11 @@
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--content-color);
+  align-self: center;
+}
+
+.wishlist-container {
+  grid-area: contentarea;
+}

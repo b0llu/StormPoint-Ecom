@@ -4,9 +4,12 @@ import { LandingPage } from "../../Pages/LandingPage/LandingPage";
 import { useLocation } from "react-router-dom";
 import { CartPage } from "../../Pages/Cart/CartPage";
 import { useCartContext } from "../../context/Cart.context";
+import { WishlistPage } from "../../Pages/WIshlist/WishlistPage";
+import { useWishlistContext } from "../../context/Wishlist.context";
 
 export const Header = () => {
   const { cartProducts } = useCartContext();
+  const { wishlistProducts } = useWishlistContext();
   const currentPath = useLocation();
 
   return (
@@ -28,10 +31,12 @@ export const Header = () => {
               {/* </Link> */}
             </div>
             <div className="badge">
-              {/* <Link to="/Wishlist" element={<WishlistPage />}> */}
-              <i className="far fa-heart"></i>
-              {/* </Link> */}
-              <div className="number">1</div>
+              <Link to="/wishlist" element={<WishlistPage />}>
+                <i className="far fa-heart"></i>
+              </Link>
+              {wishlistProducts.length === 0 ? null : (
+                <div className="number">{wishlistProducts.length}</div>
+              )}
             </div>
             <div className="badge">
               <Link to="/cart" element={<CartPage />}>

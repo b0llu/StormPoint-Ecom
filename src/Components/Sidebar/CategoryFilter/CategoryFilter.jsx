@@ -31,28 +31,24 @@ export const CartegoryFilter = () => {
       {loading ? (
         <Loader />
       ) : (
-        <>
-          {categoryData.map((category) => {
-            return (
-              <li key={category.id}>
-                <label className="form-label">
-                  <input
-                    checked={categories[category.value] ?? false}
-                    value={category.value}
-                    onChange={(e) =>
-                      dispatch({
-                        type: "CATEGORY_FILTER",
-                        payload: e.target.value,
-                      })
-                    }
-                    type="checkbox"
-                  />
-                  {category.categoryName}
-                </label>
-              </li>
-            );
-          })}
-        </>
+        categoryData.map((category) => (
+          <li key={category.id}>
+            <label className="form-label">
+              <input
+                checked={categories[category.value] ?? false}
+                value={category.value}
+                onChange={(e) =>
+                  dispatch({
+                    type: "CATEGORY_FILTER",
+                    payload: e.target.value,
+                  })
+                }
+                type="checkbox"
+              />
+              {category.categoryName}
+            </label>
+          </li>
+        ))
       )}
     </>
   );

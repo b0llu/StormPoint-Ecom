@@ -20,19 +20,9 @@ const CartProvider = ({ children }) => {
           },
         }
       );
-      // const response = await axios({
-      //   method: "post",
-      //   url: "/api/user/cart",
-      //   data: { product: item },
-      //   headers: {
-      //     authorization: encodedToken,
-      //   },
-      // });
       if (response.status === 201) {
-        setCartProducts((oldProducts) => {
-          return [...oldProducts, item];
-        });
-        dispatch({ type: "SUCCESS_TOAST", payload: 'Added to Cart' });
+        setCartProducts(response.data.cart);
+        dispatch({ type: "SUCCESS_TOAST", payload: "Added to Cart" });
       }
     } catch (err) {
       console.log(err.response.data);
@@ -41,9 +31,7 @@ const CartProvider = ({ children }) => {
 
   const removeFromCart = async (item) => {
     try {
-      const response = await axios({
-        method: "delete",
-        url: `/api/user/cart/${item._id}`,
+      const response = await axios.delete(`/api/user/cart/${item._id}`, {
         headers: {
           authorization: encodedToken,
         },
@@ -59,8 +47,32 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const changeCartQty = async (quantity, id) => {
+    try {
+      const response = await axios.post(
+        `/api/user/cart/${id}`,
+        {
+          qty: quantity,
+        },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      if (response.status === 200) {
+        setCartProducts(response.data.cart);
+        dispatch({ type: "SUCCESS_TOAST", payload: "Updated" });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ cartProducts, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cartProducts, addToCart, removeFromCart, changeCartQty }}
+    >
       {children}
     </CartContext.Provider>
   );

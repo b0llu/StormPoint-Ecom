@@ -6,7 +6,7 @@ import { CartPage } from "../../Pages/Cart/CartPage";
 import { useCartContext } from "../../context/Cart.context";
 
 export const Header = () => {
-  const { cartProducts } = useCartContext()
+  const { cartProducts } = useCartContext();
   const currentPath = useLocation();
 
   return (
@@ -37,7 +37,9 @@ export const Header = () => {
               <Link to="/cart" element={<CartPage />}>
                 <i className="fas fa-shopping-cart"></i>
               </Link>
-              <div className="number">{cartProducts.length}</div>
+              {cartProducts.length === 0 ? null : (
+                <div className="number">{cartProducts.length}</div>
+              )}
             </div>
             <div className="badge">
               <i className="fas fa-sign-out"></i>

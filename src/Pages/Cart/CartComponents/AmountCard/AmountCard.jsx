@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
+import { useCartContext } from "../../../../context/Cart.context";
 import "./AmountCard.css";
 
 export const AmountCard = () => {
+  const { cartProducts } = useCartContext();
 
+  const [total, setTotal] = useState();
 
-  // const [total, setTotal] = useState();
-
-  // useEffect(() => {
-  //   setTotal(
-  //     cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
-  //   );
-  // }, [cart]);
+  useEffect(() => {
+    setTotal(
+      cartProducts.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
+    );
+  }, [cartProducts]);
 
   return (
     <div className="card-container card-shadow">
       <h2 className="card-subtitle bold">Price Detail</h2>
       <div className="filter-divider-line"></div>
       <h2 className="card-subtitle">
-        {/* Price: <span>Rs. {total}</span> */}
-        Price: <span>Rs. 2342</span>
+        Price: <span>Rs. {total}</span>
       </h2>
       <h2 className="card-subtitle">
-        {/* Products: <span>{forLength.cartLength}</span> */}
-        Products: <span>1</span>
+        Products: <span>{cartProducts.length}</span>
       </h2>
       <h2 className="card-subtitle">
         Discount: <span>None</span>
@@ -32,8 +31,7 @@ export const AmountCard = () => {
       </h2>
       <div className="filter-divider-line"></div>
       <h2 className="card-subtitle bold">
-        {/* Total Amount: <span>Rs. {total}</span> */}
-        Total Amount: <span>Rs. 124214</span>
+        Total Amount: <span>Rs. {total}</span>
       </h2>
       <div className="filter-divider-line"></div>
       <button className="btn">Place Order</button>

@@ -7,23 +7,7 @@ import "./CartCard.css";
 
 export const CartCard = () => {
   const { loading, dispatch } = useFilterReducerContext();
-  const { cartProducts, removeFromCart } = useCartContext();
-  const encodedToken = localStorage.getItem("token");
-
-  const [somethingCart, setSomethingCart] = useState([]);
-
-  useEffect(() => {
-    dispatch({ type: "LOADING" }),
-      (async function () {
-        const { data } = await axios.get(`/api/user/cart`, {
-          headers: {
-            authorization: encodedToken,
-          },
-        });
-        setSomethingCart(data.cart);
-        dispatch({ type: "LOADING" });
-      })();
-  }, [cartProducts]);
+  const { cartProducts, removeFromCart, changeCartQty } = useCartContext();
 
   return (
     <>
@@ -31,7 +15,7 @@ export const CartCard = () => {
         <Loader />
       ) : (
         <>
-          {somethingCart.map((products) => (
+          {cartProducts.map((products) => (
             <div
               key={products.id}
               className="card-container product-card card-shadow"
@@ -73,10 +57,7 @@ export const CartCard = () => {
                 <div className="select">
                   <select
                     onChange={(e) =>
-                      dispatch({
-                        type: "CHANGE_CART_QTY",
-                        payload: { id: products.id, qty: e.target.value },
-                      })
+                      changeCartQty(Number(e.target.value), products._id)
                     }
                   >
                     <option value="1">1</option>

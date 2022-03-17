@@ -1,4 +1,7 @@
+import { useCartContext } from "../context/Cart.context";
+
 export const reducer = (state, action) => {
+
   const initialState = {
     loading: false,
     sidebar: false,
@@ -90,7 +93,6 @@ export const reducer = (state, action) => {
 
     // add to cart
     case "ADD_TO_CART":
-      console.log(state.cart);
       return {
         ...state,
         cart: [...state.cart, action.payload],

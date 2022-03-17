@@ -1,6 +1,4 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { Loader, Toast } from "../../../../Components";
+import { Loader } from "../../../../Components";
 import { useCartContext } from "../../../../context/Cart.context";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 import "./CartCard.css";

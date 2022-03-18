@@ -60,7 +60,7 @@ export const Header = () => {
               <Link to="/wishlist" element={<WishlistPage />}>
                 <i className="far fa-heart"></i>
               </Link>
-              {wishlistProducts.length === 0 && !encodedToken ? null : (
+              {wishlistProducts.length === 0 ? null : (
                 <div className="number">{wishlistProducts.length}</div>
               )}
             </div>
@@ -68,7 +68,7 @@ export const Header = () => {
               <Link to="/cart" element={<CartPage />}>
                 <i className="fas fa-shopping-cart"></i>
               </Link>
-              {cartProducts.length === 0 && !encodedToken ? null : (
+              {cartProducts.length === 0 ? null : (
                 <div className="number">{cartProducts.length}</div>
               )}
             </div>

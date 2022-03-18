@@ -16,7 +16,6 @@ export const SignupBox = () => {
 
   return (
     <>
-      <Toast />
       <h1>SignUp</h1>
       <label htmlFor="username">Username:</label>
       <input

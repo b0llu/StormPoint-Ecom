@@ -20,13 +20,11 @@ const CartProvider = ({ children }) => {
           },
         }
       );
-      if (response.status === 201 && encodedToken) {
+      if (response.status === 201) {
         setCartProducts(response.data.cart);
         dispatch({ type: "SUCCESS_TOAST", payload: "Added to Cart" });
       }
-    } catch (err) {
-      console.log(err.response.data);
-    }
+    } catch (err) {}
   };
 
   const removeFromCart = async (item) => {

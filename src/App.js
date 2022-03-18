@@ -6,6 +6,7 @@ import {
   Sidebar,
   ProductContainer,
   LandingContainer,
+  Toast,
 } from "./Components/index";
 import { Routes, Route } from "react-router-dom";
 import MockAPI from "./Mockman";
@@ -22,6 +23,7 @@ function App() {
     <>
       <LandingContainer>
         <Header />
+        <Toast />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route

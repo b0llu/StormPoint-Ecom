@@ -8,7 +8,7 @@ export const Toast = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       dispatch({ type: "TOAST_STATE_CLEAN" });
-    }, 1000);
+    }, 2000);
     return () => clearTimeout(timeout);
   }, [forToast.trigger]);
 

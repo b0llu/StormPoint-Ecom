@@ -11,6 +11,11 @@ import { Routes, Route } from "react-router-dom";
 import MockAPI from "./Mockman";
 import { CartPage } from "./Pages/Cart/CartPage";
 import { WishlistPage } from "./Pages/WIshlist/WishlistPage";
+import {
+  AuthContainer,
+  LoginBox,
+  SignupBox,
+} from "./Pages/AuthPage/ProfileComponents";
 
 function App() {
   return (
@@ -31,6 +36,22 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="mockman" element={<MockAPI />} />
+          <Route
+            path="/login"
+            element={
+              <AuthContainer>
+                <LoginBox />
+              </AuthContainer>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <AuthContainer>
+                <SignupBox />
+              </AuthContainer>
+            }
+          />
         </Routes>
         <Footer />
       </LandingContainer>

@@ -4,22 +4,25 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { FilterReducerProvider } from "./context/FilterReducer.context";
-import { useSignUp } from "./Hook/useSignUp";
 import { CartProvider } from "./context/Cart.context";
 import { WishlistProvider } from "./context/Wishlist.context";
+import { AuthProvider } from "./context/Auth.context";
+import { useTokenChecker } from "./Hook/useTokenChecker";
 
 // Call make Server
 makeServer();
-useSignUp();
+useTokenChecker();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <FilterReducerProvider>
         <CartProvider>
-          <WishlistProvider>
-            <App />
-          </WishlistProvider>
+          <AuthProvider>
+            <WishlistProvider>
+              <App />
+            </WishlistProvider>
+          </AuthProvider>
         </CartProvider>
       </FilterReducerProvider>
     </Router>

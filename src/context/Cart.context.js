@@ -20,7 +20,7 @@ const CartProvider = ({ children }) => {
           },
         }
       );
-      if (response.status === 201) {
+      if (response.status === 201 && encodedToken) {
         setCartProducts(response.data.cart);
         dispatch({ type: "SUCCESS_TOAST", payload: "Added to Cart" });
       }
@@ -69,7 +69,13 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartProducts, addToCart, removeFromCart, changeCartQty }}
+      value={{
+        cartProducts,
+        setCartProducts,
+        addToCart,
+        removeFromCart,
+        changeCartQty,
+      }}
     >
       {children}
     </CartContext.Provider>

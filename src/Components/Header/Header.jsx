@@ -7,12 +7,20 @@ import { useCartContext } from "../../context/Cart.context";
 import { WishlistPage } from "../../Pages/WIshlist/WishlistPage";
 import { useWishlistContext } from "../../context/Wishlist.context";
 import { useFilterReducerContext } from "../../context/FilterReducer.context";
+import { useAuthContext } from "../../context/Auth.context";
+import {
+  AuthContainer,
+  LoginBox,
+} from "../../Pages/AuthPage/ProfileComponents";
 
 export const Header = () => {
+  const encodedToken = localStorage.getItem("token");
+  const user = localStorage.getItem("user");
   const { cartProducts } = useCartContext();
   const { wishlistProducts } = useWishlistContext();
   const { dispatch, searchTerm } = useFilterReducerContext();
   const currentPath = useLocation();
+  const { signout } = useAuthContext();
 
   return (
     <nav>
@@ -35,16 +43,24 @@ export const Header = () => {
         )}
         <div className="margin-left-auto">
           <div className="icon-container">
+            <p>{user}</p>
             <div className="badge">
-              {/* <Link to="/Profile" element={<ProfilePage />}> */}
-              <i className="fa-solid fas fa-user"></i>
-              {/* </Link> */}
+              <Link
+                to="/login"
+                element={
+                  <AuthContainer>
+                    <LoginBox />
+                  </AuthContainer>
+                }
+              >
+                <i className="fa-solid fas fa-user"></i>
+              </Link>
             </div>
             <div className="badge">
               <Link to="/wishlist" element={<WishlistPage />}>
                 <i className="far fa-heart"></i>
               </Link>
-              {wishlistProducts.length === 0 ? null : (
+              {wishlistProducts.length === 0 && !encodedToken ? null : (
                 <div className="number">{wishlistProducts.length}</div>
               )}
             </div>
@@ -52,13 +68,17 @@ export const Header = () => {
               <Link to="/cart" element={<CartPage />}>
                 <i className="fas fa-shopping-cart"></i>
               </Link>
-              {cartProducts.length === 0 ? null : (
+              {cartProducts.length === 0 && !encodedToken ? null : (
                 <div className="number">{cartProducts.length}</div>
               )}
             </div>
-            <div className="badge">
-              <i className="fas fa-sign-out"></i>
-            </div>
+            <Link to="/" element={<LandingPage />}>
+              {encodedToken && (
+                <div onClick={() => signout()} className="badge">
+                  <i className="fas fa-sign-out"></i>
+                </div>
+              )}
+            </Link>
             <i id="toggle-theme" className="fas fa-moon icon"></i>
           </div>
         </div>

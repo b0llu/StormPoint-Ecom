@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Loader } from "../../../../Components";
+import { LoginBox } from "../../../AuthPage/ProfileComponents/index";
 import { useAuthContext } from "../../../../context/Auth.context";
 import { useCartContext } from "../../../../context/Cart.context";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
@@ -86,14 +87,24 @@ export const CardContainer = () => {
                       <button className="btn">Go To Cart</button>
                     </Link>
                   ) : (
-                    <button
-                      onClick={() => {
-                        addToCart(product);
-                      }}
-                      className="btn add-to-cart"
-                    >
-                      Add to Cart
-                    </button>
+                    <>
+                      {userState.id ? (
+                        <button
+                          onClick={() => {
+                            addToCart(product);
+                          }}
+                          className="btn add-to-cart"
+                        >
+                          Add to Cart
+                        </button>
+                      ) : (
+                        <Link to="/login" elements={<LoginBox />}>
+                          <button className="btn add-to-cart">
+                            Add to Cart
+                          </button>
+                        </Link>
+                      )}
+                    </>
                   )}
                 </div>
                 <div

@@ -15,11 +15,12 @@
 .login-container {
     display: flex;
     flex-direction: column;
-    padding: 3rem 4rem;
+    padding: 4rem 6rem;
     gap: 10px;
     background-color: #d8dcdf;
     color: var(--login-color);
     border-radius: 5px;
+    width: 50rem;
 }
 
 .login-container h1 {
@@ -47,7 +48,6 @@
     letter-spacing: 1px;
 }
 
-
 /* forget button */
 .btn-forgot {
     color: var(--text-black);
@@ -63,6 +63,7 @@
     border: none;
     color: var(--text-black);
     font-weight: 500;
+    width: 100%;
 }
 
 .btn-login:hover {
@@ -105,4 +106,10 @@
     justify-content: center;
     margin-left: 1rem;
     cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+    .login-container {
+        width: 38rem;
+    }
 }

@@ -7,11 +7,9 @@ import { FilterReducerProvider } from "./context/FilterReducer.context";
 import { CartProvider } from "./context/Cart.context";
 import { WishlistProvider } from "./context/Wishlist.context";
 import { AuthProvider } from "./context/Auth.context";
-import { useTokenChecker } from "./Hook/useTokenChecker";
 
 // Call make Server
 makeServer();
-useTokenChecker();
 
 ReactDOM.render(
   <React.StrictMode>

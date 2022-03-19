@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createContext, useContext } from "react";
-import { useState } from "react";
 import { useCartContext } from "./Cart.context";
 import { useFilterReducerContext } from "./FilterReducer.context";
 import { useWishlistContext } from "./Wishlist.context";
@@ -84,9 +83,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{ login, signup, signout, testLogger }}
-    >
+    <AuthContext.Provider value={{ login, signup, signout, testLogger }}>
       {children}
     </AuthContext.Provider>
   );

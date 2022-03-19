@@ -78,7 +78,9 @@ export const CardContainer = () => {
                   Price: <span className="color-green">₹{product.price}</span>{" "}
                 </p>
                 <div className="card-btn">
-                  {cartProducts.some((item) => item.id === product.id) ? (
+                  {loading ? (
+                    <Loader />
+                  ) : cartProducts.some((item) => item.id === product.id) ? (
                     <Link to="/Cart" element={<CartPage />}>
                       <button className="btn">Go To Cart</button>
                     </Link>

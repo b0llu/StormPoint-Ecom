@@ -1,21 +1,71 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Toast } from "../../../../Components";
 import { useAuthContext } from "../../../../context/Auth.context";
 import { AuthContainer } from "../AuthContainer/AuthContainer";
 import { LoginBox } from "../LoginBox/LoginBox";
 
 export const SignupBox = () => {
   const { signup } = useAuthContext();
-
   const [userDetails, setUserDetails] = useState({
     user: "",
     email: "",
-    password: "",
+    passwordOne: "",
+    passwordTwo: "",
+    terms: false,
   });
+  const [error, setError] = useState({ state: false, text: "" });
+  const [type, setType] = useState(true);
+
+  const validation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setError({
+        ...error,
+        state: false,
+      });
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [error]);
+
+  const signupHandler = () => {
+    if (
+      !userDetails.email ||
+      !userDetails.passwordOne ||
+      !userDetails.passwordTwo ||
+      !userDetails.user
+    ) {
+      setError({
+        text: "Dont leave any field empty",
+        state: true,
+      });
+    } else if (
+      !userDetails.passwordOne.match(validation) ||
+      !userDetails.passwordTwo.match(validation) ||
+      userDetails.passwordOne !== userDetails.passwordTwo
+    ) {
+      setError({
+        text: "Password must be same and Alphanumeric and minimum 5 letters long",
+        state: true,
+      });
+    } else if (!userDetails.terms) {
+      setError({
+        text: "Accept Terms and Conditions",
+        state: true,
+      });
+    } else if (!userDetails.email.includes("@")) {
+      setError({
+        text: "Please enter correct email",
+        state: true,
+      });
+    } else {
+      signup(userDetails);
+    }
+  };
 
   return (
     <>
+      {error.state ? <p className="for-alert">{error.text}</p> : null}
       <h1>SignUp</h1>
       <label htmlFor="username">Username:</label>
       <input
@@ -36,25 +86,85 @@ export const SignupBox = () => {
         type="text"
       />
       <label htmlFor="password">Password:</label>
-      <input
-        onChange={(e) =>
-          setUserDetails({ ...userDetails, password: e.target.value })
-        }
-        className="block-inputs"
-        placeholder="*****"
-        type="password"
-      />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignContent: "center",
+        }}
+      >
+        <input
+          onChange={(e) =>
+            setUserDetails({ ...userDetails, passwordOne: e.target.value })
+          }
+          className="block-inputs"
+          placeholder="*****"
+          type={type ? "password" : "text"}
+        />
+        {type ? (
+          <span
+            onClick={() => setType(!type)}
+            className="material-icons visibility-icon"
+          >
+            visibility_off
+          </span>
+        ) : (
+          <span
+            onClick={() => setType(!type)}
+            className="material-icons visibility-icon"
+          >
+            visibility
+          </span>
+        )}
+      </div>
       <label htmlFor="password">Confirm Password:</label>
-      <input className="block-inputs" placeholder="*****" type="password" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignContent: "center",
+        }}
+      >
+        <input
+          onChange={(e) =>
+            setUserDetails({ ...userDetails, passwordTwo: e.target.value })
+          }
+          className="block-inputs"
+          placeholder="*****"
+          type={type ? "password" : "text"}
+        />
+        {type ? (
+          <span
+            onClick={() => setType(!type)}
+            className="material-icons visibility-icon"
+          >
+            visibility_off
+          </span>
+        ) : (
+          <span
+            onClick={() => setType(!type)}
+            className="material-icons visibility-icon"
+          >
+            visibility
+          </span>
+        )}
+      </div>
       <p
         style={{ alignItems: "center", justifyContent: "center" }}
         className="remember-me"
       >
-        <input type="checkbox" /> I accept all Terms & Conditions
+        <input
+          value={userDetails.terms}
+          onClick={() => {
+            setUserDetails({ ...userDetails, terms: !userDetails.terms });
+          }}
+          type="checkbox"
+        />{" "}
+        I accept all Terms & Conditions
       </p>
       <button
         type="button"
-        onClick={() => signup(userDetails)}
+        onClick={() => signupHandler()}
         className="btn-login btn btn-primary"
       >
         Signup

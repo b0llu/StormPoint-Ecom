@@ -2,13 +2,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuthContext } from "../../../../context/Auth.context";
-import { LandingPage } from "../../../LandingPage/LandingPage";
 import { AuthContainer } from "../AuthContainer/AuthContainer";
 import { SignupBox } from "../SignupBox/SignupBox";
-import "./LoginBox.css";
 
 export const LoginBox = () => {
-  const { login, testLogger, serverError } = useAuthContext();
+  const { login, testLogger } = useAuthContext();
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
   const [error, setError] = useState({ state: false, text: "" });
   const [type, setType] = useState(true);
@@ -26,11 +24,12 @@ export const LoginBox = () => {
   }, [error]);
 
   const loginHandler = () => {
-    if (userDetails.password.match(validation) && serverError !== 404) {
+    if (userDetails.password.match(validation)) {
       login(userDetails);
-    } else if (!userDetails.email || !userDetails.password) {
+    } 
+    else if (!userDetails.email || !userDetails.password) {
       setError({
-        text: "Enter Email and Password first",
+        text: "Dont leave any field empty",
         state: true,
       });
     } else {
@@ -70,12 +69,21 @@ export const LoginBox = () => {
           placeholder="*****"
           type={type ? "password" : "text"}
         />
-        <span
-          onClick={() => setType(!type)}
-          className="material-icons visibility-icon"
-        >
-          visibility_off
-        </span>
+        {type ? (
+          <span
+            onClick={() => setType(!type)}
+            className="material-icons visibility-icon"
+          >
+            visibility_off
+          </span>
+        ) : (
+          <span
+            onClick={() => setType(!type)}
+            className="material-icons visibility-icon"
+          >
+            visibility
+          </span>
+        )}
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <label className="remember-me">

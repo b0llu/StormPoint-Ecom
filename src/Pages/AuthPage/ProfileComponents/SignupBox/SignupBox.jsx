@@ -65,121 +65,125 @@ export const SignupBox = () => {
 
   return (
     <>
-      {error.state ? <p className="for-alert">{error.text}</p> : null}
-      <h1>SignUp</h1>
-      <label htmlFor="username">Username:</label>
-      <input
-        type="text"
-        onChange={(e) =>
-          setUserDetails({ ...userDetails, user: e.target.value })
-        }
-        className="block-inputs"
-        placeholder="IamtheOne"
-      />
-      <label htmlFor="username">Email address:</label>
-      <input
-        onChange={(e) =>
-          setUserDetails({ ...userDetails, email: e.target.value })
-        }
-        className="block-inputs"
-        placeholder="JohnWick@gmail.com"
-        type="email"
-      />
-      <label htmlFor="password">Password:</label>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          alignContent: "center",
-        }}
-      >
+      <form className="login-container card-shadow">
+        {error.state ? <p className="for-alert">{error.text}</p> : null}
+        <h1>SignUp</h1>
+        <label htmlFor="username">Username:</label>
         <input
+          type="text"
+          name="firstName"
           onChange={(e) =>
-            setUserDetails({ ...userDetails, passwordOne: e.target.value })
+            setUserDetails({ ...userDetails, user: e.target.value })
           }
           className="block-inputs"
-          placeholder="*****"
-          type={type ? "password" : "text"}
+          placeholder="IamtheOne"
         />
-        {type ? (
-          <span
-            onClick={() => setType(!type)}
-            className="material-icons visibility-icon"
-          >
-            visibility_off
-          </span>
-        ) : (
-          <span
-            onClick={() => setType(!type)}
-            className="material-icons visibility-icon"
-          >
-            visibility
-          </span>
-        )}
-      </div>
-      <label htmlFor="password">Confirm Password:</label>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          alignContent: "center",
-        }}
-      >
+        <label htmlFor="username">Email address:</label>
         <input
           onChange={(e) =>
-            setUserDetails({ ...userDetails, passwordTwo: e.target.value })
+            setUserDetails({ ...userDetails, email: e.target.value })
           }
           className="block-inputs"
-          placeholder="*****"
-          type={type ? "password" : "text"}
+          placeholder="JohnWick@gmail.com"
+          type="email"
+          name="email"
         />
-        {type ? (
-          <span
-            onClick={() => setType(!type)}
-            className="material-icons visibility-icon"
-          >
-            visibility_off
-          </span>
-        ) : (
-          <span
-            onClick={() => setType(!type)}
-            className="material-icons visibility-icon"
-          >
-            visibility
-          </span>
-        )}
-      </div>
-      <p
-        style={{ alignItems: "center", justifyContent: "center" }}
-        className="remember-me"
-      >
-        <input
-          value={userDetails.terms}
-          onClick={() => {
-            setUserDetails({ ...userDetails, terms: !userDetails.terms });
+        <label htmlFor="password">Password:</label>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignContent: "center",
           }}
-          type="checkbox"
-        />{" "}
-        I accept all Terms & Conditions
-      </p>
-      <button
-        type="button"
-        onClick={() => signupHandler()}
-        className="btn-login btn btn-primary"
-      >
-        Signup
-      </button>
-      <Link
-        className="btn-sign-up"
-        to="/login"
-        element={
-          <AuthContainer>
-            <LoginBox />
-          </AuthContainer>
-        }
-      >
-        Already have an Account? <i className="fas fa-chevron-right"></i>
-      </Link>
+        >
+          <input
+            onChange={(e) =>
+              setUserDetails({ ...userDetails, passwordOne: e.target.value })
+            }
+            className="block-inputs"
+            placeholder="*****"
+            type={type ? "password" : "text"}
+          />
+          {type ? (
+            <span
+              onClick={() => setType(!type)}
+              className="material-icons visibility-icon"
+            >
+              visibility_off
+            </span>
+          ) : (
+            <span
+              onClick={() => setType(!type)}
+              className="material-icons visibility-icon"
+            >
+              visibility
+            </span>
+          )}
+        </div>
+        <label htmlFor="password">Confirm Password:</label>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignContent: "center",
+          }}
+        >
+          <input
+            onChange={(e) =>
+              setUserDetails({ ...userDetails, passwordTwo: e.target.value })
+            }
+            className="block-inputs"
+            placeholder="*****"
+            type={type ? "password" : "text"}
+          />
+          {type ? (
+            <span
+              onClick={() => setType(!type)}
+              className="material-icons visibility-icon"
+            >
+              visibility_off
+            </span>
+          ) : (
+            <span
+              onClick={() => setType(!type)}
+              className="material-icons visibility-icon"
+            >
+              visibility
+            </span>
+          )}
+        </div>
+        <p
+          style={{ alignItems: "center", justifyContent: "center" }}
+          className="remember-me"
+        >
+          <input
+            value={userDetails.terms}
+            onClick={() => {
+              setUserDetails({ ...userDetails, terms: !userDetails.terms });
+            }}
+            type="checkbox"
+          />{" "}
+          I accept all Terms & Conditions
+        </p>
+        <button
+          type="button"
+          onClick={() => signupHandler()}
+          className="btn-login btn btn-primary"
+        >
+          Signup
+        </button>
+        <Link
+          className="btn-sign-up"
+          to="/login"
+          element={
+            <AuthContainer>
+              <LoginBox />
+            </AuthContainer>
+          }
+        >
+          Already have an Account? <i className="fas fa-chevron-right"></i>
+        </Link>
+      </form>
     </>
   );
 };

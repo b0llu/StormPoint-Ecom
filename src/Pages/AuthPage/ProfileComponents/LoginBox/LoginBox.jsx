@@ -26,8 +26,7 @@ export const LoginBox = () => {
   const loginHandler = () => {
     if (userDetails.password.match(validation)) {
       login(userDetails);
-    } 
-    else if (!userDetails.email || !userDetails.password) {
+    } else if (!userDetails.email || !userDetails.password) {
       setError({
         text: "Dont leave any field empty",
         state: true,
@@ -42,80 +41,83 @@ export const LoginBox = () => {
 
   return (
     <>
-      {error.state ? <p className="for-alert">{error.text}</p> : null}
-      <h1>Login</h1>
-      <label htmlFor="username">Email address :</label>
-      <input
-        onChange={(e) =>
-          setUserDetails({ ...userDetails, email: e.target.value })
-        }
-        className="block-inputs"
-        placeholder="JohnWick@gmail.com"
-        type="text"
-      />
-      <label htmlFor="password">Password :</label>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          alignContent: "center",
-        }}
-      >
+      <form className="login-container card-shadow">
+        {error.state ? <p className="for-alert">{error.text}</p> : null}
+        <h1>Login</h1>
+        <label htmlFor="username">Email address :</label>
         <input
           onChange={(e) =>
-            setUserDetails({ ...userDetails, password: e.target.value })
+            setUserDetails({ ...userDetails, email: e.target.value })
           }
           className="block-inputs"
-          placeholder="*****"
-          type={type ? "password" : "text"}
+          placeholder="JohnWick@gmail.com"
+          type="email"
+          name="email"
         />
-        {type ? (
-          <span
-            onClick={() => setType(!type)}
-            className="material-icons visibility-icon"
-          >
-            visibility_off
-          </span>
-        ) : (
-          <span
-            onClick={() => setType(!type)}
-            className="material-icons visibility-icon"
-          >
-            visibility
-          </span>
-        )}
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <label className="remember-me">
-          <input type="checkbox" /> Remember me
-        </label>
-        <a className="btn-forgot">Forgot your password?</a>
-      </div>
-      <button
-        type="button"
-        onClick={() => testLogger()}
-        className="btn-login btn btn-primary"
-      >
-        Login with Test Credentials
-      </button>
-      <button
-        type="button"
-        onClick={() => loginHandler()}
-        className="btn-login btn btn-primary"
-      >
-        Login
-      </button>
-      <Link
-        className="btn-sign-up"
-        to="/signup"
-        element={
-          <AuthContainer>
-            <SignupBox />
-          </AuthContainer>
-        }
-      >
-        Create New Account <i className="fas fa-chevron-right"></i>
-      </Link>
+        <label htmlFor="password">Password :</label>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignContent: "center",
+          }}
+        >
+          <input
+            onChange={(e) =>
+              setUserDetails({ ...userDetails, password: e.target.value })
+            }
+            className="block-inputs"
+            placeholder="*****"
+            type={type ? "password" : "text"}
+          />
+          {type ? (
+            <span
+              onClick={() => setType(!type)}
+              className="material-icons visibility-icon"
+            >
+              visibility_off
+            </span>
+          ) : (
+            <span
+              onClick={() => setType(!type)}
+              className="material-icons visibility-icon"
+            >
+              visibility
+            </span>
+          )}
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <label className="remember-me">
+            <input type="checkbox" /> Remember me
+          </label>
+          <a className="btn-forgot">Forgot your password?</a>
+        </div>
+        <button
+          type="button"
+          onClick={() => testLogger()}
+          className="btn-login btn btn-primary"
+        >
+          Login with Test Credentials
+        </button>
+        <button
+          type="button"
+          onClick={() => loginHandler()}
+          className="btn-login btn btn-primary"
+        >
+          Login
+        </button>
+        <Link
+          className="btn-sign-up"
+          to="/signup"
+          element={
+            <AuthContainer>
+              <SignupBox />
+            </AuthContainer>
+          }
+        >
+          Create New Account <i className="fas fa-chevron-right"></i>
+        </Link>
+      </form>
     </>
   );
 };

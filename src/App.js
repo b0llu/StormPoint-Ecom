@@ -43,7 +43,6 @@ function App() {
             <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
           </Route>
-          <Route path="mockman" element={<MockAPI />} />
           <Route element={<RestrictAuth />}>
             <Route
               path="/login"
@@ -62,6 +61,7 @@ function App() {
               }
             />
           </Route>
+          <Route path="mockman" element={<MockAPI />} />
         </Routes>
         <Footer />
       </LandingContainer>

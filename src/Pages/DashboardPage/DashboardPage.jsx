@@ -6,7 +6,7 @@ import "./DashboardPage.css";
 
 export const DashboardPage = () => {
   const encodedToken = localStorage.getItem("token");
-  const [route, setRoute] = useState("settings");
+  const [route, setRoute] = useState("profile");
   const { userState, signout } = useAuthContext();
 
   return (

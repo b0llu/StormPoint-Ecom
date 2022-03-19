@@ -69,12 +69,12 @@ export const SignupBox = () => {
       <h1>SignUp</h1>
       <label htmlFor="username">Username:</label>
       <input
+        type="text"
         onChange={(e) =>
           setUserDetails({ ...userDetails, user: e.target.value })
         }
         className="block-inputs"
         placeholder="IamtheOne"
-        type="text"
       />
       <label htmlFor="username">Email address:</label>
       <input
@@ -83,7 +83,7 @@ export const SignupBox = () => {
         }
         className="block-inputs"
         placeholder="JohnWick@gmail.com"
-        type="text"
+        type="email"
       />
       <label htmlFor="password">Password:</label>
       <div

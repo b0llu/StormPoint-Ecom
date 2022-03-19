@@ -24,7 +24,9 @@ const CartProvider = ({ children }) => {
         setCartProducts(response.data.cart);
         dispatch({ type: "SUCCESS_TOAST", payload: "Added to Cart" });
       }
-    } catch (err) {}
+    } catch (err) {
+      dispatch({ type: "ERROR_TOAST", payload: "You need to login first" });
+    }
   };
 
   const removeFromCart = async (item) => {

@@ -25,7 +25,7 @@ const WishlistProvider = ({ children }) => {
         dispatch({ type: "SUCCESS_TOAST", payload: "Added to Wishlist" });
       }
     } catch (err) {
-      console.log(err);
+      dispatch({ type: "ERROR_TOAST", payload: "You need to login first" });
     }
   };
 

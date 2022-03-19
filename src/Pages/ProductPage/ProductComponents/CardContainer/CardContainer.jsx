@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Loader } from "../../../../Components";
+import { useAuthContext } from "../../../../context/Auth.context";
 import { useCartContext } from "../../../../context/Cart.context";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 import { useWishlistContext } from "../../../../context/Wishlist.context";
@@ -15,6 +16,7 @@ export const CardContainer = () => {
   const { cartProducts, addToCart } = useCartContext();
   const { wishlistProducts, addToWishlist, removeFromWishlist } =
     useWishlistContext();
+  const { userState } = useAuthContext();
 
   // initializing products from data
   useEffect(() => {
@@ -71,7 +73,6 @@ export const CardContainer = () => {
                     <span className="material-icons fav-add">favorite</span>
                   </h1>
                 )}
-
                 <h2 className="card-title">Brand : {product.subTitle}</h2>
                 <p className="card-description">{product.description}</p>
                 <p className="card-subtitle">

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useCartContext } from "./Cart.context";
 import { useFilterReducerContext } from "./FilterReducer.context";
 import { useWishlistContext } from "./Wishlist.context";
@@ -10,6 +10,8 @@ const AuthProvider = ({ children }) => {
   const { setWishlistProducts } = useWishlistContext();
   const { setCartProducts } = useCartContext();
   const { dispatch } = useFilterReducerContext();
+  const encodedToken = localStorage.getItem("token");
+  const [userState, setUserState] = useState([]);
 
   const login = async (userDetails) => {
     try {
@@ -47,6 +49,7 @@ const AuthProvider = ({ children }) => {
     localStorage.clear();
     setCartProducts([]);
     setWishlistProducts([]);
+    setUserState([]);
   };
 
   const testLogger = async () => {
@@ -82,8 +85,39 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    (async function () {
+      try {
+        const { data } = await axios.post("/api/auth/verify", {
+          encodedToken: encodedToken,
+        });
+        setUserState(data);
+
+        const cartResponse = await axios.get("/api/user/cart", {
+          headers: {
+            authorization: data.encodedToken,
+          },
+        });
+        if (cartResponse.status === 200) {
+          setCartProducts(cartResponse.data.cart);
+        }
+
+        const wishlistResponse = await axios.get("/api/user/wishlist", {
+          headers: {
+            authorization: data.encodedToken,
+          },
+        });
+        if (wishlistResponse.status === 200) {
+          setWishlistProducts(wishlistResponse.data.wishlist);
+        }
+      } catch (error) {}
+    })();
+  }, [encodedToken]);
+
   return (
-    <AuthContext.Provider value={{ login, signup, signout, testLogger }}>
+    <AuthContext.Provider
+      value={{ login, signup, signout, testLogger, userState }}
+    >
       {children}
     </AuthContext.Provider>
   );

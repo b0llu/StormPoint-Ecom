@@ -17,6 +17,8 @@ import {
   LoginBox,
   SignupBox,
 } from "./Pages/AuthPage/ProfileComponents";
+import RestrictAuth from "./Components/RequireAuth/RestrictAuth";
+import RequireAuth from "./Components/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -35,25 +37,29 @@ function App() {
               </ProductContainer>
             }
           />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/wishlist" element={<WishlistPage />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/wishlist" element={<WishlistPage />} />
+          </Route>
           <Route path="mockman" element={<MockAPI />} />
-          <Route
-            path="/login"
-            element={
-              <AuthContainer>
-                <LoginBox />
-              </AuthContainer>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <AuthContainer>
-                <SignupBox />
-              </AuthContainer>
-            }
-          />
+          <Route element={<RestrictAuth />}>
+            <Route
+              path="/login"
+              element={
+                <AuthContainer>
+                  <LoginBox />
+                </AuthContainer>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <AuthContainer>
+                  <SignupBox />
+                </AuthContainer>
+              }
+            />
+          </Route>
         </Routes>
         <Footer />
       </LandingContainer>

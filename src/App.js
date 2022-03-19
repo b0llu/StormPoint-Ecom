@@ -12,6 +12,7 @@ import { Routes, Route } from "react-router-dom";
 import MockAPI from "./Mockman";
 import { CartPage } from "./Pages/Cart/CartPage";
 import { WishlistPage } from "./Pages/WIshlist/WishlistPage";
+import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
 import {
   AuthContainer,
   LoginBox,
@@ -40,6 +41,7 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
           </Route>
           <Route path="mockman" element={<MockAPI />} />
           <Route element={<RestrictAuth />}>

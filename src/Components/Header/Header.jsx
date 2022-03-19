@@ -12,6 +12,7 @@ import {
   AuthContainer,
   LoginBox,
 } from "../../Pages/AuthPage/ProfileComponents";
+import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
 
 export const Header = () => {
   const encodedToken = localStorage.getItem("token");
@@ -46,11 +47,9 @@ export const Header = () => {
             <p>{user}</p>
             <div className="badge">
               <Link
-                to="/login"
+                to="/dashboard"
                 element={
-                  <AuthContainer>
-                    <LoginBox />
-                  </AuthContainer>
+                  <DashboardPage />
                 }
               >
                 <i className="fa-solid fas fa-user"></i>

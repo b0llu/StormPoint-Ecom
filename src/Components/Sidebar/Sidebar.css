@@ -9,6 +9,7 @@
 
 .position-fixed {
   position: fixed;
+  width: 100%;
 }
 
 .title-of-filter {

@@ -19,6 +19,24 @@ const AuthProvider = ({ children }) => {
         email: userDetails.email,
         password: userDetails.password,
       });
+
+      const cartResponse = await axios.get("/api/user/cart", {
+        headers: {
+          authorization: data.encodedToken,
+        },
+      });
+      if (cartResponse.status === 200) {
+        setCartProducts(cartResponse.data.cart);
+      }
+
+      const wishlistResponse = await axios.get("/api/user/wishlist", {
+        headers: {
+          authorization: data.encodedToken,
+        },
+      });
+      if (wishlistResponse.status === 200) {
+        setWishlistProducts(wishlistResponse.data.wishlist);
+      }
       // saving the encodedToken in the localStorage
       localStorage.setItem("StormPointToken", data.encodedToken);
       localStorage.setItem("StormPointUser", data.foundUser.firstName);
@@ -40,7 +58,7 @@ const AuthProvider = ({ children }) => {
       localStorage.setItem("StormPointUser", data.createdUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Sign Up Successful" });
     } catch (error) {
-      console.log(error);
+      dispatch({ type: "ERROR_TOAST", payload: error.response.data.errors });
     }
   };
 

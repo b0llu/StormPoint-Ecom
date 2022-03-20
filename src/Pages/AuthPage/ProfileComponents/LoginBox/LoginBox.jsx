@@ -12,6 +12,8 @@ export const LoginBox = () => {
   const [type, setType] = useState(true);
 
   const validation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
+  const emailValidation =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -31,7 +33,12 @@ export const LoginBox = () => {
         text: "Dont leave any field empty",
         state: true,
       });
-    } else {
+    } else if (!userDetails.email.match(emailValidation)) {
+      setError({
+        text: "Please enter correct email",
+        state: true,
+      });
+    }else {
       setError({
         text: "Password should be AlphaNumeric and more than 5 letters",
         state: true,

@@ -17,6 +17,8 @@ export const SignupBox = () => {
   const [type, setType] = useState(true);
 
   const validation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
+  const emailValidation =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -53,7 +55,7 @@ export const SignupBox = () => {
         text: "Accept Terms and Conditions",
         state: true,
       });
-    } else if (!userDetails.email.includes("@")) {
+    } else if (!userDetails.email.match(emailValidation)) {
       setError({
         text: "Please enter correct email",
         state: true,

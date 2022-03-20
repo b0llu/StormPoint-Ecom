@@ -15,8 +15,8 @@ import {
 import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
 
 export const Header = () => {
-  const encodedToken = localStorage.getItem("token");
-  const user = localStorage.getItem("user");
+  const encodedToken = localStorage.getItem("StormPointToken");
+  const user = localStorage.getItem("StormPointUser");
   const { cartProducts } = useCartContext();
   const { wishlistProducts } = useWishlistContext();
   const { dispatch, searchTerm } = useFilterReducerContext();
@@ -46,12 +46,7 @@ export const Header = () => {
           <div className="icon-container">
             <p>{user}</p>
             <div className="badge">
-              <Link
-                to="/dashboard"
-                element={
-                  <DashboardPage />
-                }
-              >
+              <Link to="/dashboard" element={<DashboardPage />}>
                 <i className="fa-solid fas fa-user"></i>
               </Link>
             </div>

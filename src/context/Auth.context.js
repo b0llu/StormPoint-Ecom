@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
   const { setWishlistProducts } = useWishlistContext();
   const { setCartProducts } = useCartContext();
   const { dispatch } = useFilterReducerContext();
-  const encodedToken = localStorage.getItem("token");
+  const encodedToken = localStorage.getItem("StormPointToken");
   const [userState, setUserState] = useState([]);
 
   const login = async (userDetails) => {
@@ -20,8 +20,8 @@ const AuthProvider = ({ children }) => {
         password: userDetails.password,
       });
       // saving the encodedToken in the localStorage
-      localStorage.setItem("token", data.encodedToken);
-      localStorage.setItem("user", data.foundUser.firstName);
+      localStorage.setItem("StormPointToken", data.encodedToken);
+      localStorage.setItem("StormPointUser", data.foundUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Log In Successful" });
     } catch (error) {
       dispatch({ type: "ERROR_TOAST", payload: error.response.data.errors });
@@ -36,8 +36,8 @@ const AuthProvider = ({ children }) => {
         password: userDetails.passwordOne,
       });
       // saving the encodedToken in the localStorage
-      localStorage.setItem("token", data.encodedToken);
-      localStorage.setItem("user", data.createdUser.firstName);
+      localStorage.setItem("StormPointToken", data.encodedToken);
+      localStorage.setItem("StormPointUser", data.createdUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Sign Up Successful" });
     } catch (error) {
       console.log(error);
@@ -77,8 +77,8 @@ const AuthProvider = ({ children }) => {
         setWishlistProducts(wishlistResponse.data.wishlist);
       }
 
-      localStorage.setItem("token", data.encodedToken);
-      localStorage.setItem("user", data.foundUser.firstName);
+      localStorage.setItem("StormPointToken", data.encodedToken);
+      localStorage.setItem("StormPointUser", data.foundUser.firstName);
       dispatch({ type: "SUCCESS_TOAST", payload: "Log In Successful" });
     } catch (error) {
       console.log(error);

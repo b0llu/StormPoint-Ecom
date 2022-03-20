@@ -5,7 +5,7 @@ import { useFilterReducerContext } from "./FilterReducer.context";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const encodedToken = localStorage.getItem("token");
+  const encodedToken = localStorage.getItem("StormPointToken");
   const [cartProducts, setCartProducts] = useState([]);
   const { dispatch } = useFilterReducerContext();
 

@@ -5,7 +5,7 @@ import { useFilterReducerContext } from "./FilterReducer.context";
 const WishlistContext = createContext();
 
 const WishlistProvider = ({ children }) => {
-  const encodedToken = localStorage.getItem("token");
+  const encodedToken = localStorage.getItem("StormPointToken");
   const [wishlistProducts, setWishlistProducts] = useState([]);
   const { dispatch } = useFilterReducerContext();
 
@@ -47,7 +47,12 @@ const WishlistProvider = ({ children }) => {
 
   return (
     <WishlistContext.Provider
-      value={{ wishlistProducts, setWishlistProducts, addToWishlist, removeFromWishlist }}
+      value={{
+        wishlistProducts,
+        setWishlistProducts,
+        addToWishlist,
+        removeFromWishlist,
+      }}
     >
       {children}
     </WishlistContext.Provider>

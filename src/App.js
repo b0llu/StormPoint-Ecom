@@ -13,6 +13,7 @@ import MockAPI from "./Mockman";
 import { CartPage } from "./Pages/Cart/CartPage";
 import { WishlistPage } from "./Pages/WIshlist/WishlistPage";
 import { DashboardPage } from "./Pages/DashboardPage/DashboardPage";
+import { ErrorPage } from "./Pages/ErrorPage/ErrorPage";
 import {
   AuthContainer,
   LoginBox,
@@ -62,6 +63,7 @@ function App() {
             />
           </Route>
           <Route path="mockman" element={<MockAPI />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </LandingContainer>

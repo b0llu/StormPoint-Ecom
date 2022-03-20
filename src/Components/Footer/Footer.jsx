@@ -6,10 +6,10 @@ export const Footer = () => {
       <div className="footer">
         <h2>Made by Dhruv Samant</h2>
         <div className="footer-icon-container">
-          <a href="https://github.com/B0llu">
+          <a target="_blank" href="https://github.com/B0llu">
             <i className="fab fa-github"></i>
           </a>
-          <a href="https://twitter.com/TheBestDhruv">
+          <a target="_blank" href="https://twitter.com/TheBestDhruv">
             <i className="fab fa-twitter"></i>
           </a>
         </div>

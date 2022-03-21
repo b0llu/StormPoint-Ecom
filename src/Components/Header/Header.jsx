@@ -67,7 +67,7 @@ export const Header = () => {
               )}
             </div>
             <Link to="/" element={<LandingPage />}>
-              {encodedToken && (
+              {user && (
                 <div onClick={() => signout()} className="badge">
                   <i className="fas fa-sign-out"></i>
                 </div>

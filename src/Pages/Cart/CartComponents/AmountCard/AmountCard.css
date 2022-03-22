@@ -15,6 +15,8 @@
     background-color: var(--success-color);
     border: none;
     height: 5rem;
+    font-size: 2rem;
+    font-weight: 500;
 }
 
 .amount-container .card-container .btn:hover {

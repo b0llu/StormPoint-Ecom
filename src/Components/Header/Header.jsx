@@ -4,9 +4,14 @@ import { LandingPage } from "../../Pages/LandingPage/LandingPage";
 import { useLocation } from "react-router-dom";
 import { CartPage } from "../../Pages/Cart/CartPage";
 import { useCartContext } from "../../context/Cart.context";
+import { WishlistPage } from "../../Pages/WIshlist/WishlistPage";
+import { useWishlistContext } from "../../context/Wishlist.context";
+import { useFilterReducerContext } from "../../context/FilterReducer.context";
 
 export const Header = () => {
   const { cartProducts } = useCartContext();
+  const { wishlistProducts } = useWishlistContext();
+  const { dispatch, searchTerm } = useFilterReducerContext();
   const currentPath = useLocation();
 
   return (
@@ -18,7 +23,15 @@ export const Header = () => {
           </h1>
         </Link>
         {currentPath.pathname === "/products" && (
-          <input className="header-input" placeholder="Search" type="text" />
+          <input
+            className="header-input"
+            placeholder="Search"
+            value={searchTerm}
+            type="text"
+            onChange={(e) =>
+              dispatch({ type: "SEARCH_BAR", payload: e.target.value })
+            }
+          />
         )}
         <div className="margin-left-auto">
           <div className="icon-container">
@@ -28,10 +41,12 @@ export const Header = () => {
               {/* </Link> */}
             </div>
             <div className="badge">
-              {/* <Link to="/Wishlist" element={<WishlistPage />}> */}
-              <i className="far fa-heart"></i>
-              {/* </Link> */}
-              <div className="number">1</div>
+              <Link to="/wishlist" element={<WishlistPage />}>
+                <i className="far fa-heart"></i>
+              </Link>
+              {wishlistProducts.length === 0 ? null : (
+                <div className="number">{wishlistProducts.length}</div>
+              )}
             </div>
             <div className="badge">
               <Link to="/cart" element={<CartPage />}>
@@ -48,7 +63,14 @@ export const Header = () => {
           </div>
         </div>
         {currentPath.pathname === "/products" && (
-          <input className="mobile-input" type="text" placeholder="Search" />
+          <input
+            onChange={(e) =>
+              dispatch({ type: "SEARCH_BAR", payload: e.target.value })
+            }
+            className="mobile-input"
+            type="text"
+            placeholder="Search"
+          />
         )}
       </div>
     </nav>

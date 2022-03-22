@@ -10,6 +10,7 @@ import {
 import { Routes, Route } from "react-router-dom";
 import MockAPI from "./Mockman";
 import { CartPage } from "./Pages/Cart/CartPage";
+import { WishlistPage } from "./Pages/WIshlist/WishlistPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             }
           />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
           <Route path="mockman" element={<MockAPI />} />
         </Routes>
         <Footer />

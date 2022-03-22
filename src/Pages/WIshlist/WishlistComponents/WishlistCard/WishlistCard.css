@@ -1,0 +1,13 @@
+.wishlist-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.wishlist-cards .fav-added {
+    color: var(--alert-color);
+}
+
+.wishlist-cards .fav-added:hover {
+    color: var(--heart-hover);
+}

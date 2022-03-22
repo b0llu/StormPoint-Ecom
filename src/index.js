@@ -4,13 +4,12 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { FilterReducerProvider } from "./context/FilterReducer.context";
-import { useSignUp } from "./Hook/useSignUp";
 import { CartProvider } from "./context/Cart.context";
 import { WishlistProvider } from "./context/Wishlist.context";
+import { AuthProvider } from "./context/Auth.context";
 
 // Call make Server
 makeServer();
-useSignUp();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,7 +17,9 @@ ReactDOM.render(
       <FilterReducerProvider>
         <CartProvider>
           <WishlistProvider>
-            <App />
+            <AuthProvider>
+              <App />
+            </AuthProvider>
           </WishlistProvider>
         </CartProvider>
       </FilterReducerProvider>

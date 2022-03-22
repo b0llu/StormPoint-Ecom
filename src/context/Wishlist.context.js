@@ -25,7 +25,7 @@ const WishlistProvider = ({ children }) => {
         dispatch({ type: "SUCCESS_TOAST", payload: "Added to Wishlist" });
       }
     } catch (err) {
-      console.log(err);
+      dispatch({ type: "ERROR_TOAST", payload: "You need to login first" });
     }
   };
 
@@ -47,7 +47,7 @@ const WishlistProvider = ({ children }) => {
 
   return (
     <WishlistContext.Provider
-      value={{ wishlistProducts, addToWishlist, removeFromWishlist }}
+      value={{ wishlistProducts, setWishlistProducts, addToWishlist, removeFromWishlist }}
     >
       {children}
     </WishlistContext.Provider>

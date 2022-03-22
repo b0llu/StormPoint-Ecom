@@ -1,4 +1,4 @@
-import { Toast } from "../../Components";
+
 import {
   CartCardContainer,
   ShowcaseContainer,
@@ -10,7 +10,6 @@ import {
 export const CartPage = () => {
   return (
     <>
-      <Toast />
       <CartCardContainer>
         <>
           <ShowcaseContainer>

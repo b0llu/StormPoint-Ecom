@@ -1,7 +1,9 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Loader } from "../../../../Components";
+import { LoginBox } from "../../../AuthPage/ProfileComponents/index";
+import { useAuthContext } from "../../../../context/Auth.context";
 import { useCartContext } from "../../../../context/Cart.context";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 import { useWishlistContext } from "../../../../context/Wishlist.context";
@@ -15,6 +17,7 @@ export const CardContainer = () => {
   const { cartProducts, addToCart } = useCartContext();
   const { wishlistProducts, addToWishlist, removeFromWishlist } =
     useWishlistContext();
+  const { userState } = useAuthContext();
 
   // initializing products from data
   useEffect(() => {
@@ -71,26 +74,37 @@ export const CardContainer = () => {
                     <span className="material-icons fav-add">favorite</span>
                   </h1>
                 )}
-
                 <h2 className="card-title">Brand : {product.subTitle}</h2>
                 <p className="card-description">{product.description}</p>
                 <p className="card-subtitle">
                   Price: <span className="color-green">₹{product.price}</span>{" "}
                 </p>
                 <div className="card-btn">
-                  {cartProducts.some((item) => item.id === product.id) ? (
+                  {loading ? (
+                    <Loader />
+                  ) : cartProducts.some((item) => item.id === product.id) ? (
                     <Link to="/Cart" element={<CartPage />}>
                       <button className="btn">Go To Cart</button>
                     </Link>
                   ) : (
-                    <button
-                      onClick={() => {
-                        addToCart(product);
-                      }}
-                      className="btn add-to-cart"
-                    >
-                      Add to Cart
-                    </button>
+                    <>
+                      {userState.id ? (
+                        <button
+                          onClick={() => {
+                            addToCart(product);
+                          }}
+                          className="btn add-to-cart"
+                        >
+                          Add to Cart
+                        </button>
+                      ) : (
+                        <Link to="/login" elements={<LoginBox />}>
+                          <button className="btn add-to-cart">
+                            Add to Cart
+                          </button>
+                        </Link>
+                      )}
+                    </>
                   )}
                 </div>
                 <div

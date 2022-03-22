@@ -25,7 +25,7 @@ const CartProvider = ({ children }) => {
         dispatch({ type: "SUCCESS_TOAST", payload: "Added to Cart" });
       }
     } catch (err) {
-      console.log(err.response.data);
+      dispatch({ type: "ERROR_TOAST", payload: "You need to login first" });
     }
   };
 
@@ -69,7 +69,13 @@ const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartProducts, addToCart, removeFromCart, changeCartQty }}
+      value={{
+        cartProducts,
+        setCartProducts,
+        addToCart,
+        removeFromCart,
+        changeCartQty,
+      }}
     >
       {children}
     </CartContext.Provider>

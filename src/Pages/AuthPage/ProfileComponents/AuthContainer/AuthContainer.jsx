@@ -4,7 +4,7 @@ export const AuthContainer = ({ children }) => {
   return (
     <section>
       <main className="main-content">
-        <form className="login-container card-shadow">{children}</form>
+        {children}
       </main>
     </section>
   );

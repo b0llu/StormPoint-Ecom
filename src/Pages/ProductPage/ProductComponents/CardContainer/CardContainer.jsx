@@ -24,7 +24,7 @@ export const CardContainer = () => {
     dispatch({ type: "LOADING" }),
       (async function () {
         try {
-          const { data } = await axios.get("./api/products");
+          const { data } = await axios.get("/api/products");
           dispatch({ type: "INITIALIZE_PRODUCTS", payload: data.products });
           dispatch({ type: "LOADING" });
         } catch (err) {

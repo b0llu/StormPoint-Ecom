@@ -39,12 +39,13 @@ function App() {
               </ProductContainer>
             }
           />
-
+          
           <Route element={<RequireAuth />}>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
           </Route>
+          
           <Route element={<RestrictAuth />}>
             <Route
               path="/login"

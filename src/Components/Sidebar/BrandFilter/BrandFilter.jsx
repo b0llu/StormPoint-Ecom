@@ -47,7 +47,7 @@ export const BrandFilter = () => {
                       })
                     }
                     type="checkbox"
-                  />
+                    />
                   {brand.brandName}
                 </label>
               </li>

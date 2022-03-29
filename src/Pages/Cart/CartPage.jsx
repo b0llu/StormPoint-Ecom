@@ -1,4 +1,5 @@
 
+import { useDocTitle } from "../../Hook/useTitle";
 import {
   CartCardContainer,
   ShowcaseContainer,
@@ -8,6 +9,8 @@ import {
 } from "./CartComponents/index";
 
 export const CartPage = () => {
+  useDocTitle("Cart | StormPoint");
+
   return (
     <>
       <CartCardContainer>

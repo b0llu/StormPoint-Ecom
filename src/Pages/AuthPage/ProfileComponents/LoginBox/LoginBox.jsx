@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import { useAuthContext } from "../../../../context/Auth.context";
 import { AuthContainer } from "../AuthContainer/AuthContainer";
 import { SignupBox } from "../SignupBox/SignupBox";
+import { useDocTitle } from "../../../../Hook/useTitle";
 
 export const LoginBox = () => {
+  useDocTitle("Login | StormPoint");
   const { login, testLogger } = useAuthContext();
   const [userDetails, setUserDetails] = useState({ email: "", password: "" });
   const [error, setError] = useState({ state: false, text: "" });

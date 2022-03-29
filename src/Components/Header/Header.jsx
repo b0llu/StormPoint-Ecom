@@ -8,10 +8,6 @@ import { WishlistPage } from "../../Pages/WIshlist/WishlistPage";
 import { useWishlistContext } from "../../context/Wishlist.context";
 import { useFilterReducerContext } from "../../context/FilterReducer.context";
 import { useAuthContext } from "../../context/Auth.context";
-import {
-  AuthContainer,
-  LoginBox,
-} from "../../Pages/AuthPage/ProfileComponents";
 import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
 
 export const Header = () => {

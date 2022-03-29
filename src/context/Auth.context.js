@@ -87,30 +87,33 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     (async function () {
-      try {
-        const { data } = await axios.post("/api/auth/verify", {
-          encodedToken: encodedToken,
-        });
-        setUserState(data);
+      if (encodedToken) {
+        try {
+          const response = await axios.post("/api/auth/verify", {
+            encodedToken: encodedToken,
+          });
+          response && response.data && setUserState(response.data.user);
+          const cartResponse = await axios.get("/api/user/cart", {
+            headers: {
+              authorization: encodedToken,
+            },
+          });
+          if (cartResponse.status === 200) {
+            setCartProducts(cartResponse.data.cart);
+          }
 
-        const cartResponse = await axios.get("/api/user/cart", {
-          headers: {
-            authorization: data.encodedToken,
-          },
-        });
-        if (cartResponse.status === 200) {
-          setCartProducts(cartResponse.data.cart);
+          const wishlistResponse = await axios.get("/api/user/wishlist", {
+            headers: {
+              authorization: encodedToken,
+            },
+          });
+          if (wishlistResponse.status === 200) {
+            setWishlistProducts(wishlistResponse.data.wishlist);
+          }
+        } catch (error) {
+          console.log(error);
         }
-
-        const wishlistResponse = await axios.get("/api/user/wishlist", {
-          headers: {
-            authorization: data.encodedToken,
-          },
-        });
-        if (wishlistResponse.status === 200) {
-          setWishlistProducts(wishlistResponse.data.wishlist);
-        }
-      } catch (error) {}
+      }
     })();
   }, [encodedToken]);
 

@@ -2,7 +2,6 @@ import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
 import { formatDate } from "../utils/authUtils";
 import bcrypt from "bcryptjs";
-// const jwt = require("jsonwebtoken");
 import jwt from "jsonwebtoken";
 
 /**
@@ -120,7 +119,7 @@ export const verifyUser = function (schema, request) {
     if (decodedToken) {
       const user = this.db.users.findBy({ email: decodedToken.email });
       if (user) {
-        return user;
+        return new Response(200, {}, { user });
       }
     }
     return new Response(

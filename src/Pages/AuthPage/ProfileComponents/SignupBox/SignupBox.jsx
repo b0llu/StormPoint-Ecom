@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../../../context/Auth.context";
+import { useDocTitle } from "../../../../Hook/useTitle";
 import { AuthContainer } from "../AuthContainer/AuthContainer";
 import { LoginBox } from "../LoginBox/LoginBox";
 
 export const SignupBox = () => {
+  useDocTitle("Signup | StormPoint");
   const { signup } = useAuthContext();
   const [userDetails, setUserDetails] = useState({
     user: "",

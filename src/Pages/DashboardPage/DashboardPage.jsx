@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/Auth.context";
+import { useDocTitle } from "../../Hook/useTitle";
 import { LandingPage } from "../LandingPage/LandingPage";
 import "./DashboardPage.css";
 
 export const DashboardPage = () => {
+  useDocTitle("Dashboard | StormPoint");
   const encodedToken = localStorage.getItem("token");
   const [route, setRoute] = useState("profile");
   const { userState, signout } = useAuthContext();

@@ -7,7 +7,7 @@ import "./DashboardPage.css";
 
 export const DashboardPage = () => {
   useDocTitle("Dashboard | StormPoint");
-  const encodedToken = localStorage.getItem("token");
+  const encodedToken = localStorage.getItem("StormPointToken");
   const [route, setRoute] = useState("profile");
   const { userState, signout } = useAuthContext();
 

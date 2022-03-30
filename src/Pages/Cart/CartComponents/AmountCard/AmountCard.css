@@ -8,6 +8,7 @@
 .amount-container .card-container {
     width: 50rem;
     margin-top: 2rem;
+    color: var(--content-color);
 }
 
 .amount-container .card-container .btn {

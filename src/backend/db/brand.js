@@ -32,14 +32,14 @@ export const brands = [
     brandName: "Cooler Master",
     value: "coolerMaster",
     image:
-      "https://pngimage.net/wp-content/uploads/2018/05/cooler-master-logo-png-3.png",
+      "https://freepikpsd.com/file/2019/10/cooler-master-logo-png-5-Transparent-Images.png",
   },
   {
     _id: uuid(),
     brandName: "Corsair",
     value: "corsair",
     image:
-      "https://logodownload.org/wp-content/uploads/2014/09/corsair-logo-0.png",
+      "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/092015/corsair_new_1.png?itok=HHDRgXQP",
   },
   {
     _id: uuid(),

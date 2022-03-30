@@ -9,10 +9,11 @@ import { useWishlistContext } from "../../context/Wishlist.context";
 import { useFilterReducerContext } from "../../context/FilterReducer.context";
 import { useAuthContext } from "../../context/Auth.context";
 import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
+import { useThemeContext } from "../../context/Theme.context";
 
 export const Header = () => {
-  const encodedToken = localStorage.getItem("token");
-  const user = localStorage.getItem("user");
+  const { theme, toggleLightDarkTheme } = useThemeContext();
+  const user = localStorage.getItem("StormPointUser");
   const { cartProducts } = useCartContext();
   const { wishlistProducts } = useWishlistContext();
   const { dispatch, searchTerm } = useFilterReducerContext();
@@ -40,14 +41,9 @@ export const Header = () => {
         )}
         <div className="margin-left-auto">
           <div className="icon-container">
-            <p>{user}</p>
+            {user && <p>Hello, {user}</p>}
             <div className="badge">
-              <Link
-                to="/dashboard"
-                element={
-                  <DashboardPage />
-                }
-              >
+              <Link to="/dashboard" element={<DashboardPage />}>
                 <i className="fa-solid fas fa-user"></i>
               </Link>
             </div>
@@ -68,13 +64,18 @@ export const Header = () => {
               )}
             </div>
             <Link to="/" element={<LandingPage />}>
-              {encodedToken && (
+              {user && (
                 <div onClick={() => signout()} className="badge">
                   <i className="fas fa-sign-out"></i>
                 </div>
               )}
             </Link>
-            <i id="toggle-theme" className="fas fa-moon icon"></i>
+            <i
+              onClick={toggleLightDarkTheme}
+              className={`${
+                theme === "light" ? "fas fa-moon" : "fas fa-sun"
+              } icon`}
+            ></i>
           </div>
         </div>
         {currentPath.pathname === "/products" && (

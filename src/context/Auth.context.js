@@ -110,23 +110,10 @@ const AuthProvider = ({ children }) => {
           const response = await axios.post("/api/auth/verify", {
             encodedToken: encodedToken,
           });
-          response && response.data && setUserState(response.data.user);
-          const cartResponse = await axios.get("/api/user/cart", {
-            headers: {
-              authorization: encodedToken,
-            },
-          });
-          if (cartResponse.status === 200) {
-            setCartProducts(cartResponse.data.cart);
-          }
-
-          const wishlistResponse = await axios.get("/api/user/wishlist", {
-            headers: {
-              authorization: encodedToken,
-            },
-          });
-          if (wishlistResponse.status === 200) {
-            setWishlistProducts(wishlistResponse.data.wishlist);
+          if (response && response.data) {
+            setUserState(response.data.user);
+            setCartProducts(response.data.user.cart);
+            setWishlistProducts(response.data.user.wishlist);
           }
         } catch (error) {
           console.log(error);

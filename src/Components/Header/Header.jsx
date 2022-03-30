@@ -9,9 +9,10 @@ import { useWishlistContext } from "../../context/Wishlist.context";
 import { useFilterReducerContext } from "../../context/FilterReducer.context";
 import { useAuthContext } from "../../context/Auth.context";
 import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
+import { useThemeContext } from "../../context/Theme.context";
 
 export const Header = () => {
-  const encodedToken = localStorage.getItem("StormPointToken");
+  const { theme, toggleLightDarkTheme } = useThemeContext();
   const user = localStorage.getItem("StormPointUser");
   const { cartProducts } = useCartContext();
   const { wishlistProducts } = useWishlistContext();
@@ -69,7 +70,12 @@ export const Header = () => {
                 </div>
               )}
             </Link>
-            <i id="toggle-theme" className="fas fa-moon icon"></i>
+            <i
+              onClick={toggleLightDarkTheme}
+              className={`${
+                theme === "light" ? "fas fa-moon" : "fas fa-sun"
+              } icon`}
+            ></i>
           </div>
         </div>
         {currentPath.pathname === "/products" && (

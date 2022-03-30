@@ -7,6 +7,7 @@ import { FilterReducerProvider } from "./context/FilterReducer.context";
 import { CartProvider } from "./context/Cart.context";
 import { WishlistProvider } from "./context/Wishlist.context";
 import { AuthProvider } from "./context/Auth.context";
+import { ThemeProvider } from "./context/Theme.context";
 
 // Call make Server
 makeServer();
@@ -17,9 +18,11 @@ ReactDOM.render(
       <CartProvider>
         <WishlistProvider>
           <AuthProvider>
-            <Router>
-              <App />
-            </Router>
+            <ThemeProvider>
+              <Router>
+                <App />
+              </Router>
+            </ThemeProvider>
           </AuthProvider>
         </WishlistProvider>
       </CartProvider>

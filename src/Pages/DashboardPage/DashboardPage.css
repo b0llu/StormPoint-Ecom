@@ -72,3 +72,35 @@
 .active {
     color: var(--primary-color);
 }
+
+@media screen and (max-width: 600px) {
+  .dashboard-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dashboard-header {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .dashboard-sections ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dashboard-sections ul li {
+    margin-right: 0;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .dashboard-section-details {
+    border-left: none;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

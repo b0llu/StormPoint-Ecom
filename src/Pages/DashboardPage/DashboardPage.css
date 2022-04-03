@@ -21,7 +21,7 @@
   transition: 0.2s ease-in-out;
 }
 
-.dasboard-container {
+.dashboard-container {
   display: flex;
   width: 50rem;
 }

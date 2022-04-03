@@ -15,7 +15,7 @@ export const DashboardPage = () => {
     <div className="showcase-container">
       <div className="dashboard">
         <h1 className="dashboard-header">Account</h1>
-        <div className="dasboard-container">
+        <div className="dashboard-container">
           <div className="dashboard-sections">
             <ul>
               <li

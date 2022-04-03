@@ -1,15 +1,16 @@
 .footer {
-  background-color: var(--nav-bg-color);
+  background-color: var(--card-container-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin-top: 5rem;
+  box-shadow: 0px 0px 32px -11px rgba(0,0,0,0.55);
 }
 
 .footer h2 {
   font-size: 2rem;
-  color: var(--icon-color);
+  color: var(--for-theme);
   margin: 2rem 0 0 0;
   font-weight: 400;
 }
@@ -24,7 +25,7 @@
 }
 
 .footer-icon-container a {
-  color: var(--icon-color);
+  color: var(--for-theme);
   margin: 0 5px;
 }
 

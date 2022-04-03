@@ -12,10 +12,11 @@ a {
 
 .navbar {
   padding: 3rem;
-  background-color: var(--nav-bg-color);
+  background-color: var(--card-container-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0px -3px 32px -11px rgba(0,0,0,0.55);
 }
 
 .header-input {
@@ -25,6 +26,9 @@ a {
   border-radius: 1rem;
   border: none;
   width: 30%;
+  border: 1px solid var(--for-theme);
+  background-color: var(--card-container-bg);
+  color: var(--for-theme);
 }
 
 .header-input:focus {
@@ -32,7 +36,7 @@ a {
 }
 
 .icon {
-  color: var(--icon-color);
+  color: var(--for-theme);
   font-size: 2.5rem;
   margin: 0 2rem;
 }
@@ -43,12 +47,12 @@ a {
   justify-content: center;
   margin-right: 1rem;
   font-size: 2rem;
-  color: var(--icon-color);
+  color: var(--for-theme);
   padding-bottom: 1rem;
 }
 
 .icon-container a {
-  color: var(--icon-color);
+  color: var(--for-theme);
 }
 
 .icon-container a:hover {
@@ -109,6 +113,9 @@ a {
     border-radius: 1rem;
     width: 100%;
     margin-top: 2rem;
+    border: 1px solid var(--for-theme);
+    background-color: var(--card-container-bg);
+    color: var(--for-theme);
   }
 
   .navbar {

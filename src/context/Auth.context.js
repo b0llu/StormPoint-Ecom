@@ -64,7 +64,8 @@ const AuthProvider = ({ children }) => {
 
   const signout = () => {
     dispatch({ type: "ERROR_TOAST", payload: "Logged Out" });
-    localStorage.clear();
+    localStorage.removeItem('StormPointToken');
+    localStorage.removeItem('StormPointUser');
     setCartProducts([]);
     setWishlistProducts([]);
     setUserState([]);

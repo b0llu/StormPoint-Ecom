@@ -5,7 +5,11 @@ const RestrictAuth = () => {
   const { userState } = useAuthContext();
   const location = useLocation();
   return userState.id ? (
-    <Navigate to="/" state={{ from: location }} replace />
+    <Navigate
+      to={location.state !== null ? location.state.from.pathname : "/"}
+      state={{ from: location }}
+      replace
+    />
   ) : (
     <Outlet />
   );

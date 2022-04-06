@@ -17,7 +17,7 @@
 
 ## 📖 About
 
-StormPoint is an e-commerce platform created for Gamers. You can buy any product related to PC!
+StormPoint is an e-commerce platform created for PC Enthusiast. You can buy any product related to PC!
 
 So what are you waiting for Order Now.
 

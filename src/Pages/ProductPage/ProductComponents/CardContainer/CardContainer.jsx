@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Loader } from "../../../../Components";
 import { LoginBox } from "../../../AuthPage/ProfileComponents/index";
 import { useAuthContext } from "../../../../context/Auth.context";
@@ -18,6 +18,7 @@ export const CardContainer = () => {
   const { wishlistProducts, addToWishlist, removeFromWishlist } =
     useWishlistContext();
   const { userState } = useAuthContext();
+  const location = useLocation();
 
   // initializing products from data
   useEffect(() => {
@@ -98,7 +99,11 @@ export const CardContainer = () => {
                           Add to Cart
                         </button>
                       ) : (
-                        <Link to="/login" elements={<LoginBox />}>
+                        <Link
+                          state={{ from: location }}
+                          to="/login"
+                          elements={<LoginBox />}
+                        >
                           <button className="btn add-to-cart">
                             Add to Cart
                           </button>

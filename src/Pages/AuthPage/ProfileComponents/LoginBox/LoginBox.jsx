@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useAuthContext } from "../../../../context/Auth.context";
 import { AuthContainer } from "../AuthContainer/AuthContainer";
@@ -13,7 +13,8 @@ export const LoginBox = () => {
   const [error, setError] = useState({ state: false, text: "" });
   const [type, setType] = useState(true);
   const [trigger, setTrigger] = useState(true)
-
+  const location = useLocation()
+  
   const validation = /^(?=.*\d)(?=.*[a-z]).{5,10}$/;
   const emailValidation =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -120,6 +121,7 @@ export const LoginBox = () => {
           Login
         </button>
         <Link
+          state={{ from: location }}
           className="btn-sign-up"
           to="/signup"
           element={

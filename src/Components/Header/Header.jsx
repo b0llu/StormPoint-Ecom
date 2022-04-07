@@ -43,7 +43,10 @@ export const Header = () => {
           <div className="icon-container">
             {user && <p>Hello, {user}</p>}
             <div className="badge">
-              <Link to="/dashboard" element={<DashboardPage />}>
+              <Link
+                to="/dashboard"
+                element={<DashboardPage />}
+              >
                 <i className="fa-solid fas fa-user"></i>
               </Link>
             </div>

@@ -142,6 +142,19 @@ describe("testing reducer", () => {
     expect(outOfStock).toEqual(finalState);
   });
 
+  test("should return all products", () => {
+    const initialState = [
+      { id: "1234", name: "Monitor", inStock: false },
+      { id: "1235", name: "Ram", inStock: true },
+      { id: "1236", name: "Mouse", inStock: false },
+      { id: "1237", name: "Keyboard", inStock: true },
+    ];
+
+    const outOfStock = outOfStockFilter(initialState, true);
+
+    expect(outOfStock).toEqual(initialState);
+  });
+
   test("should return searched product", () => {
     const initialState = [
       { id: "1234", title: "Monitor", inStock: false },

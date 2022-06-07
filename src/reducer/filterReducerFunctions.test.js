@@ -44,6 +44,18 @@ describe("testing reducer", () => {
     expect(sortedProducts).toEqual(finalState);
   });
 
+  test("should return intial state if nothing to sort", () => {
+    const initialState = [
+      { id: "1234", name: "Monitor", price: 200 },
+      { id: "1235", name: "Ram", price: 100 },
+      { id: "1236", name: "Mouse", price: 300 },
+    ];
+
+    const sortedProducts = getSortedProducts(initialState, null);
+
+    expect(sortedProducts).toEqual(initialState);
+  });
+
   test("should filter when filter key word is passed (categoryfilter)", () => {
     const initialState = [
       { id: "1234", name: "Monitor", price: 200, categoryName: "asus" },
@@ -65,6 +77,19 @@ describe("testing reducer", () => {
     expect(filteredProducts).toEqual(finalState);
   });
 
+  test("should return all products if none of the categoryFilter is selected", () => {
+    const initialState = [
+      { id: "1234", name: "Monitor", price: 200, categoryName: "asus" },
+      { id: "1235", name: "Ram", price: 100, categoryName: "msi" },
+      { id: "1236", name: "Mouse", price: 300, categoryName: "asus" },
+      { id: "1237", name: "Keyboard", price: 300, categoryName: "logitech" },
+    ];
+
+    const filteredProducts = categoryFilter(initialState, {});
+
+    expect(filteredProducts).toEqual(initialState);
+  });
+
   test("should filter when filter key word is passed (brandfilter)", () => {
     const initialState = [
       { id: "1234", name: "Monitor", price: 200, brandName: "asus" },
@@ -84,6 +109,19 @@ describe("testing reducer", () => {
     const filteredProducts = brandFilter(initialState, filterOrder);
 
     expect(filteredProducts).toEqual(finalState);
+  });
+
+  test("should return all products if none of the brandFilter is selected", () => {
+    const initialState = [
+      { id: "1234", name: "Monitor", price: 200, categoryName: "asus" },
+      { id: "1235", name: "Ram", price: 100, categoryName: "msi" },
+      { id: "1236", name: "Mouse", price: 300, categoryName: "asus" },
+      { id: "1237", name: "Keyboard", price: 300, categoryName: "logitech" },
+    ];
+
+    const filteredProducts = brandFilter(initialState, {});
+
+    expect(filteredProducts).toEqual(initialState);
   });
 
   test("should remove out of stock products", () => {
@@ -117,6 +155,19 @@ describe("testing reducer", () => {
     const searchedTerm = searchBarHandler(initialState, "ram");
 
     expect(searchedTerm).toEqual(finalState);
+  });
+
+  test("should return all products if nothing in searchTerm", () => {
+    const initialState = [
+      { id: "1234", title: "Monitor", inStock: false },
+      { id: "1235", title: "Ram", inStock: true },
+      { id: "1236", title: "Mouse", inStock: false },
+      { id: "1237", title: "Keyboard", inStock: true },
+    ];
+
+    const searchedTerm = searchBarHandler(initialState, "");
+
+    expect(searchedTerm).toEqual(initialState);
   });
 
   test("should return products within range", () => {

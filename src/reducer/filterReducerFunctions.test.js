@@ -7,7 +7,7 @@ import {
   searchBarHandler,
 } from "./filterReducerFunctions";
 
-describe("testing reducer", () => {
+describe("testing filter reducer functions", () => {
   test("should sort when sorting order is passed (high to low)", () => {
     const initialState = [
       { id: "1234", name: "Monitor", price: 200 },

@@ -1,5 +1,3 @@
-import { useCartContext } from "../context/Cart.context";
-
 export const reducer = (state, action) => {
   const initialState = {
     loading: false,

@@ -10,6 +10,7 @@ export const reducer = (state, action) => {
     searchTerm: '',
     forToast: { text: "", trigger: false, selector: "" },
     products: state.products,
+    cart: state.cart,
   };
 
   switch (action.type) {

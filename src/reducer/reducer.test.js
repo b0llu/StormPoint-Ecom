@@ -266,6 +266,20 @@ describe("testing reducer", () => {
     expect(searchState).toEqual(finalState);
   });
 
+  test('should reset the initial state', () => {
+    const action = {
+      type: "RESET",
+    };
+
+    const finalState = {
+      ...initialState
+    }
+
+    const resetState = reducer(initialState, action)
+
+    expect(resetState).toEqual(finalState);
+  })
+
   test("should return unhandled action type", () => {
     const action = {
       type: "UNHANDLED",

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useCartContext } from "./Cart.context";
 
 jest.mock("axios");
 

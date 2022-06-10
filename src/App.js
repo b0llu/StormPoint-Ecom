@@ -21,6 +21,7 @@ import {
 } from "./Pages/AuthPage/ProfileComponents";
 import RestrictAuth from "./Components/RequireAuth/RestrictAuth";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
+import { SingleProductPage } from "./Pages/SingleProductPage/SingleProductPage";
 
 function App() {
   return (
@@ -39,12 +40,13 @@ function App() {
               </ProductContainer>
             }
           />
+          <Route path="/:productName" element={<SingleProductPage />} />
           <Route element={<RequireAuth />}>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
           </Route>
-          
+
           <Route element={<RestrictAuth />}>
             <Route
               path="/login"

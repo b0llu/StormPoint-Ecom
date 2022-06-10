@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Loader } from "../../../../Components";
 import { LoginBox } from "../../../AuthPage/ProfileComponents/index";
 import { useAuthContext } from "../../../../context/Auth.context";
@@ -19,6 +19,7 @@ export const CardContainer = () => {
     useWishlistContext();
   const { userState } = useAuthContext();
   const location = useLocation();
+  const navigate = useNavigate();
 
   // initializing products from data
   useEffect(() => {
@@ -34,6 +35,16 @@ export const CardContainer = () => {
       })();
   }, []);
 
+  const wishlistAdd = (e, product) => {
+    e.stopPropagation();
+    addToWishlist(product);
+  };
+
+  const cartAdd = (e, product) => {
+    e.stopPropagation();
+    addToCart(product);
+  }
+
   return (
     <>
       {loading ? (
@@ -46,7 +57,10 @@ export const CardContainer = () => {
                 key={product.id}
                 className="card-container product-card card-shadow"
               >
-                <div className="product-img">
+                <div
+                  onClick={() => navigate(`/${product.title}`)}
+                  className="product-img"
+                >
                   <img
                     className="card-img"
                     src={product.image}
@@ -66,8 +80,8 @@ export const CardContainer = () => {
                   </h1>
                 ) : (
                   <h1
-                    onClick={() => {
-                      addToWishlist(product);
+                    onClick={(e) => {
+                      wishlistAdd(e, product);
                     }}
                     className="card-title"
                   >
@@ -91,8 +105,8 @@ export const CardContainer = () => {
                     <>
                       {userState.id ? (
                         <button
-                          onClick={() => {
-                            addToCart(product);
+                          onClick={(e) => {
+                            cartAdd(e, product);
                           }}
                           className="btn add-to-cart"
                         >

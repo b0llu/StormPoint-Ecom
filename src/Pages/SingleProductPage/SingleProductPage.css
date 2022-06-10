@@ -1,0 +1,130 @@
+.for-loader {
+  grid-area: contentarea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.single-product-container {
+  grid-area: contentarea;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--content-color);
+}
+
+.single-product-data {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.single-product-image img {
+  height: 35rem;
+  width: 35rem;
+  border-radius: 5px;
+}
+
+.single-product-info {
+  width: 45rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.single-product-info h1 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.single-product-info h2 {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.single-product-info p {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.single-product-info h4 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.single-product-info h4 span {
+  color: var(--success-color);
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.cart-btn {
+  padding: 8px 1.4rem;
+  background-color: #3da4df;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: none;
+}
+
+.cart-btn:hover {
+  background-color: var(--primary-color);
+  transition: 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 750px) {
+  .single-product-data {
+    flex-direction: column;
+  }
+
+  .single-product-info {
+    align-items: center;
+    width: 35rem;
+  }
+
+  .single-product-info h1 {
+  text-align: center;
+}
+
+  .single-product-info p {
+    text-align: center;
+  }
+
+  .single-product-image img {
+  margin-top: 2rem;
+}
+}
+
+@media screen and (min-width: 2000px) {
+  .single-product-image img {
+    height: 45rem;
+    width: 45rem;
+    border-radius: 5px;
+  }
+
+  .single-product-info h1 {
+    font-size: 4rem;
+  }
+
+  .single-product-info h2 {
+    font-size: 2.8rem;
+  }
+
+  .single-product-info p {
+    font-size: 2rem;
+  }
+
+  .single-product-info h4 {
+    font-size: 2.4rem;
+  }
+
+  .cart-btn {
+    font-size: 2.4rem;
+  }
+}

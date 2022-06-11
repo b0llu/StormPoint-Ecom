@@ -10,6 +10,7 @@ import { useFilterReducerContext } from "../../context/FilterReducer.context";
 import { useAuthContext } from "../../context/Auth.context";
 import { DashboardPage } from "../../Pages/DashboardPage/DashboardPage";
 import { useThemeContext } from "../../context/Theme.context";
+import { useState } from "react";
 
 export const Header = () => {
   const { theme, toggleLightDarkTheme } = useThemeContext();
@@ -19,6 +20,25 @@ export const Header = () => {
   const { dispatch, searchTerm } = useFilterReducerContext();
   const currentPath = useLocation();
   const { signout } = useAuthContext();
+  const [term, setTerm] = useState("");
+
+  const debounce = (callbackFn, delay) => {
+    let timeout;
+
+    return (query) => {
+      dispatch({ type: "LOADING" });
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        callbackFn(query);
+        dispatch({ type: "LOADING" });
+      }, delay);
+    };
+  };
+
+  const handleDebounce = debounce(
+    (str) => dispatch({ type: "SEARCH_BAR", payload: str }),
+    1000
+  );
 
   return (
     <nav>
@@ -32,21 +52,19 @@ export const Header = () => {
           <input
             className="header-input"
             placeholder="Search"
-            value={searchTerm}
+            value={term ?? searchTerm}
             type="text"
-            onChange={(e) =>
-              dispatch({ type: "SEARCH_BAR", payload: e.target.value })
-            }
+            onChange={(e) => {
+              handleDebounce(e.target.value);
+              setTerm(e.target.value);
+            }}
           />
         )}
         <div className="margin-left-auto">
           <div className="icon-container">
             {user && <p>Hello, {user}</p>}
             <div className="badge">
-              <Link
-                to="/dashboard"
-                element={<DashboardPage />}
-              >
+              <Link to="/dashboard" element={<DashboardPage />}>
                 <i className="fa-solid fas fa-user"></i>
               </Link>
             </div>

@@ -28,33 +28,27 @@ export const BrandFilter = () => {
   return (
     <>
       <li className="filter-section-title">Brands</li>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          {brandData.map((brand) => {
-            return (
-              <li key={brand.id}>
-                <label className="form-label">
-                  <input
-                    className="checkbox-input"
-                    checked={brands[brand.value] ?? false}
-                    value={brand.value}
-                    onChange={(e) =>
-                      dispatch({
-                        type: "BRAND_FILTER",
-                        payload: e.target.value,
-                      })
-                    }
-                    type="checkbox"
-                    />
-                  {brand.brandName}
-                </label>
-              </li>
-            );
-          })}
-        </>
-      )}
+      {brandData.map((brand) => {
+        return (
+          <li key={brand.id}>
+            <label className="form-label">
+              <input
+                className="checkbox-input"
+                checked={brands[brand.value] ?? false}
+                value={brand.value}
+                onChange={(e) =>
+                  dispatch({
+                    type: "BRAND_FILTER",
+                    payload: e.target.value,
+                  })
+                }
+                type="checkbox"
+              />
+              {brand.brandName}
+            </label>
+          </li>
+        );
+      })}
     </>
   );
 };

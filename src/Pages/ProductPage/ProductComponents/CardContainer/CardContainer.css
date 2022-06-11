@@ -97,6 +97,12 @@
   display: none;
 }
 
+.searched-product-none {
+  color: var(--content-color);
+  font-weight: 500;
+  font-size: 3rem;
+}
+
 @media screen and (max-width: 1300px) {
   .card-container.product-card {
     margin: 5px;

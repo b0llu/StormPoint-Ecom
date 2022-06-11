@@ -43,7 +43,7 @@ export const CardContainer = () => {
   const cartAdd = (e, product) => {
     e.stopPropagation();
     addToCart(product);
-  }
+  };
 
   return (
     <>
@@ -51,89 +51,95 @@ export const CardContainer = () => {
         <Loader />
       ) : (
         <>
-          {sortedProducts.map((product) => {
-            return (
-              <div
-                key={product.id}
-                className="card-container product-card card-shadow"
-              >
+          {sortedProducts.length === 0 ? (
+            <h1 className="searched-product-none">Searched Product is not Available</h1>
+          ) : (
+            sortedProducts.map((product) => {
+              return (
                 <div
-                  onClick={() => navigate(`/${product.title}`)}
-                  className="product-img"
+                  key={product.id}
+                  className="card-container product-card card-shadow"
                 >
-                  <img
-                    className="card-img"
-                    src={product.image}
-                    alt={product.alt}
-                  />
-                </div>
-                {product.badge && (
-                  <h6 className="card-badge">{product.badge}</h6>
-                )}
-                {wishlistProducts.some((item) => item.id === product.id) ? (
-                  <h1
-                    onClick={() => removeFromWishlist(product)}
-                    className="card-subtitle"
+                  <div
+                    onClick={() => navigate(`/${product.title}`)}
+                    className="product-img"
                   >
-                    {product.title}{" "}
-                    <span className="material-icons fav-added">favorite</span>
-                  </h1>
-                ) : (
-                  <h1
-                    onClick={(e) => {
-                      wishlistAdd(e, product);
-                    }}
-                    className="card-title"
-                  >
-                    {product.title}{" "}
-                    <span className="material-icons fav-add">favorite</span>
-                  </h1>
-                )}
-                <h2 className="card-title">Brand : {product.subTitle}</h2>
-                <p className="card-description">{product.description}</p>
-                <p className="card-subtitle">
-                  Price: <span className="color-green">₹{product.price}</span>{" "}
-                </p>
-                <div className="card-btn">
-                  {loading ? (
-                    <Loader />
-                  ) : cartProducts.some((item) => item.id === product.id) ? (
-                    <Link to="/Cart" element={<CartPage />}>
-                      <button className="btn">Go To Cart</button>
-                    </Link>
+                    <img
+                      className="card-img"
+                      src={product.image}
+                      alt={product.alt}
+                    />
+                  </div>
+                  {product.badge && (
+                    <h6 className="card-badge">{product.badge}</h6>
+                  )}
+                  {wishlistProducts.some((item) => item.id === product.id) ? (
+                    <h1
+                      onClick={() => removeFromWishlist(product)}
+                      className="card-subtitle"
+                    >
+                      {product.title}{" "}
+                      <span className="material-icons fav-added">favorite</span>
+                    </h1>
                   ) : (
-                    <>
-                      {userState.id ? (
-                        <button
-                          onClick={(e) => {
-                            cartAdd(e, product);
-                          }}
-                          className="btn add-to-cart"
-                        >
-                          Add to Cart
-                        </button>
-                      ) : (
-                        <Link
-                          state={{ from: location }}
-                          to="/login"
-                          elements={<LoginBox />}
-                        >
-                          <button className="btn add-to-cart">
+                    <h1
+                      onClick={(e) => {
+                        wishlistAdd(e, product);
+                      }}
+                      className="card-title"
+                    >
+                      {product.title}{" "}
+                      <span className="material-icons fav-add">favorite</span>
+                    </h1>
+                  )}
+                  <h2 className="card-title">Brand : {product.subTitle}</h2>
+                  <p className="card-description">{product.description}</p>
+                  <p className="card-subtitle">
+                    Price: <span className="color-green">₹{product.price}</span>{" "}
+                  </p>
+                  <div className="card-btn">
+                    {loading ? (
+                      <Loader />
+                    ) : cartProducts.some((item) => item.id === product.id) ? (
+                      <Link to="/Cart" element={<CartPage />}>
+                        <button className="btn">Go To Cart</button>
+                      </Link>
+                    ) : (
+                      <>
+                        {userState.id ? (
+                          <button
+                            onClick={(e) => {
+                              cartAdd(e, product);
+                            }}
+                            className="btn add-to-cart"
+                          >
                             Add to Cart
                           </button>
-                        </Link>
-                      )}
-                    </>
-                  )}
+                        ) : (
+                          <Link
+                            state={{ from: location }}
+                            to="/login"
+                            elements={<LoginBox />}
+                          >
+                            <button className="btn add-to-cart">
+                              Add to Cart
+                            </button>
+                          </Link>
+                        )}
+                      </>
+                    )}
+                  </div>
+                  <div
+                    className={` ${
+                      product.inStock ? "hidden" : "out-of-stock"
+                    }`}
+                  >
+                    <span>Out Of Stock</span>
+                  </div>
                 </div>
-                <div
-                  className={` ${product.inStock ? "hidden" : "out-of-stock"}`}
-                >
-                  <span>Out Of Stock</span>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </>
       )}
     </>

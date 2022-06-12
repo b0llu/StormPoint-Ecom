@@ -14,12 +14,11 @@ import { useState } from "react";
 
 export const Header = () => {
   const { theme, toggleLightDarkTheme } = useThemeContext();
-  const user = localStorage.getItem("StormPointUser");
   const { cartProducts } = useCartContext();
   const { wishlistProducts } = useWishlistContext();
   const { dispatch, searchTerm } = useFilterReducerContext();
   const currentPath = useLocation();
-  const { signout } = useAuthContext();
+  const { signout, userState } = useAuthContext();
   const [term, setTerm] = useState("");
 
   const debounce = (callbackFn, delay) => {
@@ -62,7 +61,9 @@ export const Header = () => {
         )}
         <div className="margin-left-auto">
           <div className="icon-container">
-            {user && <p>Hello, {user}</p>}
+            {Object.keys(userState).length !== 0 && (
+              <p>Hello, {userState.firstName}</p>
+            )}
             <div className="badge">
               <Link to="/dashboard" element={<DashboardPage />}>
                 <i className="fa-solid fas fa-user"></i>
@@ -85,7 +86,7 @@ export const Header = () => {
               )}
             </div>
             <Link to="/" element={<LandingPage />}>
-              {user && (
+              {Object.keys(userState).length !== 0 && (
                 <div onClick={() => signout()} className="badge">
                   <i className="fas fa-sign-out"></i>
                 </div>

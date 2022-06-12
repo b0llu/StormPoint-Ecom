@@ -11,7 +11,8 @@ const AuthProvider = ({ children }) => {
   const { setCartProducts } = useCartContext();
   const { dispatch } = useFilterReducerContext();
   const encodedToken = localStorage.getItem("StormPointToken");
-  const [userState, setUserState] = useState([]);
+  const [userState, setUserState] = useState({});
+  console.log(userState)
 
   const login = async (userDetails) => {
     try {

@@ -25,11 +25,9 @@ export const Header = () => {
     let timeout;
 
     return (query) => {
-      dispatch({ type: "LOADING" });
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         callbackFn(query);
-        dispatch({ type: "LOADING" });
       }, delay);
     };
   };

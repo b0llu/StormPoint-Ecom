@@ -52,7 +52,7 @@ export const CardContainer = () => {
       ) : (
         <>
           {sortedProducts.length === 0 ? (
-            <h1 className="searched-product-none">Searched Product is not Available</h1>
+            <h1 className="searched-product-none">Product is not Available</h1>
           ) : (
             sortedProducts.map((product) => {
               return (

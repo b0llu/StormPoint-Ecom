@@ -11,18 +11,16 @@ export const AddressModal = ({ amount, setAddressModal }) => {
   const handleSubmit = () => {
     if (address.number.length <= 12 && address.number.length >= 10) {
       var options = {
-        key: process.env.RAZORPAY_GETAWAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-        amount: { amount }, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        key: process.env.REACT_APP_RAZORPAY_KEY,
+        key_secret: process.env.REACT_APP_RAZORPAY_SECRET,
+        amount: Number((amount += "00")),
         currency: "INR",
         name: "StormPoint",
-        order_id: "order_9A33XWu170gUtm", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        description: "Thanks for shopping with us",
         handler: function (response) {
-          //   alert(response.razorpay_payment_id);
-          //   alert(response.razorpay_order_id);
-          //   alert(response.razorpay_signature);
           dispatch({
             type: "SUCCESS_TOAST",
-            payload: response.razorpay_order_id,
+            payload: `Order Successful, Payment ID: ${response.razorpay_payment_id}`,
           });
         },
         prefill: {
@@ -39,6 +37,7 @@ export const AddressModal = ({ amount, setAddressModal }) => {
       };
       var pay = new window.Razorpay(options);
       pay.open();
+      setAddressModal((prev) => !prev);
     } else if (
       address.name !== "" &&
       address.address !== "" &&

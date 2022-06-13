@@ -1,0 +1,77 @@
+.address-modal-wrapper {
+  align-items: center;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-width: 100vw;
+  position: fixed;
+  z-index: 5;
+}
+
+.address-modal-container {
+    background-color: var(--card-container-bg);
+    border: 1px solid var(--content-color);
+    border-radius: 5px;
+    color: var(--content-color);
+    margin: auto;
+    width: 35rem;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.address-modal-container label {
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
+    gap: 1rem;
+    font-size: 1.6rem;
+}
+
+.address-modal-container input {
+    border: 1px solid var(--content-color);
+    background-color: var(--card-container-bg);
+    padding: 8px;
+    border-radius: 5px;
+    color: var(--content-color);
+    width: 25rem;
+}
+
+.address-modal-container input:focus {
+    outline: none;
+}
+
+.address-modal-container textarea {
+    border: 1px solid var(--content-color);
+    background-color: var(--card-container-bg);
+    padding: 8px;
+    border-radius: 5px;
+    color: var(--content-color);
+    resize: none;
+    width: 25rem;
+}
+
+.address-modal-container textarea:focus {
+    outline: none;
+}
+
+.address-modal-container button {
+    padding: 8px 3rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--success-color);
+}
+
+.address-modal-container button:hover {
+    background-color: var(--order-btn);
+    transition: 0.2s ease-in-out;
+}

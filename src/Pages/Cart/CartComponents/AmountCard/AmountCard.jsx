@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AddressModal } from "../../../../Components";
 import { useCartContext } from "../../../../context/Cart.context";
 import "./AmountCard.css";
 
@@ -6,6 +7,7 @@ export const AmountCard = () => {
   const { cartProducts } = useCartContext();
 
   const [total, setTotal] = useState();
+  const [addressModal, setAddressModal] = useState(false);
 
   useEffect(() => {
     setTotal(
@@ -34,7 +36,10 @@ export const AmountCard = () => {
         Total Amount: <span>Rs. {total}</span>
       </h2>
       <div className="filter-divider-line"></div>
-      <button className="btn">Place Order</button>
+      <button onClick={() => setAddressModal((prev) => !prev)} className="btn">
+        Place Order
+      </button>
+      {addressModal && <AddressModal amount={total} setAddressModal={setAddressModal} />}
     </div>
   );
 };

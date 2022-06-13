@@ -5,3 +5,4 @@ export { ProductContainer } from "./ProductContainer/ProductContainer";
 export { Sidebar } from "./Sidebar/Sidebar";
 export { Toast } from "./Toast/Toast";
 export { Loader } from "./Loader/Loader";
+export { AddressModal } from "./AddressModal/AddressModal";

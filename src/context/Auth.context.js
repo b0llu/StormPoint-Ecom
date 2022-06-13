@@ -12,7 +12,6 @@ const AuthProvider = ({ children }) => {
   const { dispatch } = useFilterReducerContext();
   const encodedToken = localStorage.getItem("StormPointToken");
   const [userState, setUserState] = useState({});
-  console.log(userState)
 
   const login = async (userDetails) => {
     try {

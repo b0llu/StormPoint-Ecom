@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useAuthContext } from "../../context/Auth.context";
+import { useCartContext } from "../../context/Cart.context";
 import { useFilterReducerContext } from "../../context/FilterReducer.context";
 import "./AddressModal.css";
 
 export const AddressModal = ({ amount, setAddressModal }) => {
   const { dispatch } = useFilterReducerContext();
   const { userState } = useAuthContext();
+  const { setCartProducts } = useCartContext();
   const [address, setAddress] = useState({ name: "", address: "", number: "" });
 
   const handleSubmit = () => {
@@ -22,6 +24,7 @@ export const AddressModal = ({ amount, setAddressModal }) => {
             type: "SUCCESS_TOAST",
             payload: `Order Successful, Payment ID: ${response.razorpay_payment_id}`,
           });
+          setCartProducts([]);
         },
         prefill: {
           name: address.name,

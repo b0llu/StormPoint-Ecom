@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Loader } from "../../../../Components";
 import { LoginBox } from "../../../AuthPage/ProfileComponents/index";
@@ -7,12 +7,12 @@ import { useAuthContext } from "../../../../context/Auth.context";
 import { useCartContext } from "../../../../context/Cart.context";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 import { useWishlistContext } from "../../../../context/Wishlist.context";
-import { useFilterFunctionCombiner } from "../../../../Hook/useFilterFunctionCombiner";
 import { CartPage } from "../../../Cart/CartPage";
 import "./CardContainer.css";
+import { usePaginationContext } from "../../../../context/Pagination.context";
 
 export const CardContainer = () => {
-  const { sortedProducts } = useFilterFunctionCombiner();
+  const { finalPosts } = usePaginationContext();
   const { loading, dispatch } = useFilterReducerContext();
   const { cartProducts, addToCart } = useCartContext();
   const { wishlistProducts, addToWishlist, removeFromWishlist } =
@@ -51,10 +51,10 @@ export const CardContainer = () => {
         <Loader />
       ) : (
         <>
-          {sortedProducts.length === 0 ? (
+          {finalPosts.length === 0 ? (
             <h1 className="searched-product-none">Product is not Available</h1>
           ) : (
-            sortedProducts.map((product) => {
+            finalPosts.map((product) => {
               return (
                 <div
                   key={product.id}

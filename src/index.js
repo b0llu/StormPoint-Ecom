@@ -8,6 +8,7 @@ import { CartProvider } from "./context/Cart.context";
 import { WishlistProvider } from "./context/Wishlist.context";
 import { AuthProvider } from "./context/Auth.context";
 import { ThemeProvider } from "./context/Theme.context";
+import { PaginationProvider } from "./context/Pagination.context";
 
 // Call make Server
 makeServer();
@@ -19,9 +20,11 @@ ReactDOM.render(
         <WishlistProvider>
           <AuthProvider>
             <ThemeProvider>
-              <Router>
-                <App />
-              </Router>
+              <PaginationProvider>
+                <Router>
+                  <App />
+                </Router>
+              </PaginationProvider>
             </ThemeProvider>
           </AuthProvider>
         </WishlistProvider>

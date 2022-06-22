@@ -57,6 +57,7 @@
     color: var(--content-color);
     resize: none;
     width: 25rem;
+    font-family: inherit;
 }
 
 .address-modal-container textarea:focus {

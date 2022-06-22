@@ -100,12 +100,6 @@ export const LoginBox = () => {
             </span>
           )}
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <label className="remember-me">
-            <input type="checkbox" /> Remember me
-          </label>
-          <a className="btn-forgot">Forgot your password?</a>
-        </div>
         <button
           type="button"
           onClick={() => testLogger()}

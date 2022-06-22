@@ -8,8 +8,9 @@ export const RatingFilter = () => {
       <li className="filter-section-title">Price</li>
       <div className="rating">
         <label className="slider-label">
-          <span>1000</span>
-          <span>100000</span>
+          <span>0</span>
+          <span>To</span>
+          <span>{price}</span>
         </label>
         <input
           className="slider"

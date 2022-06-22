@@ -31,8 +31,7 @@ export const brands = [
     _id: uuid(),
     brandName: "Cooler Master",
     value: "coolerMaster",
-    image:
-      "https://freepikpsd.com/file/2019/10/cooler-master-logo-png-5-Transparent-Images.png",
+    image: "https://cdn.mos.cms.futurecdn.net/rWJjkfuhfQsupW48TpNdEe.jpg",
   },
   {
     _id: uuid(),

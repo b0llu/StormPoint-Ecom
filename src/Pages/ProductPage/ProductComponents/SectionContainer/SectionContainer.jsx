@@ -2,6 +2,7 @@ import { Pagination } from "../../../../Components";
 import { useFilterReducerContext } from "../../../../context/FilterReducer.context";
 import { usePaginationContext } from "../../../../context/Pagination.context";
 import { useFilterFunctionCombiner } from "../../../../Hook/useFilterFunctionCombiner";
+import { WindowResize } from "../../../../Hook/useWindowResize";
 import "./SectionContainer.css";
 
 export const SectionContainer = ({ children }) => {

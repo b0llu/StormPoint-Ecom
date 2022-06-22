@@ -1,6 +1,8 @@
 .section-container {
   display: flex;
   flex-direction: column;
+  position: relative;
+  min-height: 100vh;
 }
 
 section .hamburger {
@@ -23,6 +25,7 @@ section .hamburger {
   margin-right: auto;
   margin-left: auto;
   margin-top: 3rem;
+  margin-bottom: 5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

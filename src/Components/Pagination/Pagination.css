@@ -1,17 +1,18 @@
 .pagination {
     width: 100%;
     text-align: center;
-    margin-top: 3rem;
     z-index: 4;
+    position: absolute;
+    bottom: 0;
 }
 
 .pagination-btn {
     color: var(--content-color);
     font-size: 2rem;
-    margin: 0 3rem;
+    margin: 0 2rem;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
-    padding: 1rem 2rem;
+    padding: 6px 1.4rem;
 }
 
 .pagination-btn:hover {

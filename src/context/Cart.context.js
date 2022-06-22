@@ -67,6 +67,21 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const clearCart = async () => {
+    try {
+      const response = await axios.delete(`/api/user/cart/clear`, {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      if (response.status === 200) {
+        setCartProducts(response.data.cart);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -75,6 +90,7 @@ const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         changeCartQty,
+        clearCart,
       }}
     >
       {children}

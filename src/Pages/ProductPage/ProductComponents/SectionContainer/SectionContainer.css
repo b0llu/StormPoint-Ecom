@@ -1,11 +1,8 @@
 .section-container {
-  width: 95%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 3rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
 }
 
 section .hamburger {
@@ -23,6 +20,17 @@ section .hamburger {
   transition: 0.2s ease-in-out;
 }
 
+.children-container {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
 @media screen and (max-width: 450px) {
   section .hamburger {
     display: block;
@@ -30,5 +38,9 @@ section .hamburger {
     padding: 1rem;
     z-index: 1;
     border-radius: 1rem;
+  }
+
+  .children-container {
+    justify-content: center;
   }
 }

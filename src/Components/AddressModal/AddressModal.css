@@ -57,21 +57,41 @@
     color: var(--content-color);
     resize: none;
     width: 25rem;
+    font-family: inherit;
 }
 
 .address-modal-container textarea:focus {
     outline: none;
 }
 
-.address-modal-container button {
+.dummybtn {
+    padding: 8px 3rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    width: 25rem;
+}
+
+.dummybtn:hover {
+    background-color: #48D8E8;
+    transition: 0.2s ease-in-out;
+}
+
+.checkout {
     padding: 8px 3rem;
     margin-top: 2rem;
     border-radius: 5px;
     cursor: pointer;
     background-color: var(--success-color);
+    outline: none;
+    border: none;
+    width: 25rem;
 }
 
-.address-modal-container button:hover {
+.checkout:hover {
     background-color: var(--order-btn);
     transition: 0.2s ease-in-out;
 }

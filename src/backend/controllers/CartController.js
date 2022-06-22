@@ -99,6 +99,38 @@ export const removeItemFromCartHandler = function (schema, request) {
 };
 
 /**
+ * This handler handles removing items to user's cart.
+ * send DELETE Request at /api/user/cart/clear
+ * */
+
+export const clearCartHandler = function (schema, request) {
+  const userId = requiresAuth.call(this, request);
+  try {
+    if (!userId) {
+      new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        }
+      );
+    }
+    let userCart = schema.users.findBy({ _id: userId }).cart;
+    userCart = [];
+    this.db.users.update({ _id: userId }, { cart: userCart });
+    return new Response(200, {}, { cart: userCart });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+/**
  * This handler handles adding items to user's cart.
  * send POST Request at /api/user/cart/:productId
  * body contains {action} (whose 'type' can be increment or decrement)
@@ -118,22 +150,6 @@ export const updateCartItemHandler = function (schema, request) {
       );
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
-    // const { action } = JSON.parse(request.requestBody);
-    // if (action.type === "increment") {
-    //   userCart.forEach((product) => {
-    //     if (product._id === productId) {
-    //       product.qty += 1;
-    //       product.updatedAt = formatDate();
-    //     }
-    //   });
-    // } else if (action.type === "decrement") {
-    //   userCart.forEach((product) => {
-    //     if (product._id === productId) {
-    //       product.qty -= 1;
-    //       product.updatedAt = formatDate();
-    //     }
-    //   });
-    // }
     const { qty } = JSON.parse(request.requestBody);
     userCart.forEach((item) => {
       if (item._id === productId) {

@@ -2,13 +2,23 @@ import { useState } from "react";
 import { useAuthContext } from "../../context/Auth.context";
 import { useCartContext } from "../../context/Cart.context";
 import { useFilterReducerContext } from "../../context/FilterReducer.context";
+import { useNavigate } from "react-router-dom";
 import "./AddressModal.css";
 
 export const AddressModal = ({ amount, setAddressModal }) => {
+  const navigate = useNavigate();
   const { dispatch } = useFilterReducerContext();
   const { userState } = useAuthContext();
-  const { setCartProducts } = useCartContext();
+  const { clearCart } = useCartContext();
   const [address, setAddress] = useState({ name: "", address: "", number: "" });
+
+  const handleDummyData = () => {
+    setAddress({
+      name: "Admin",
+      address: "12/A, something somewhere, someplace",
+      number: "9999999999",
+    });
+  };
 
   const handleSubmit = () => {
     if (address.number.length <= 12 && address.number.length >= 10) {
@@ -24,7 +34,8 @@ export const AddressModal = ({ amount, setAddressModal }) => {
             type: "SUCCESS_TOAST",
             payload: `Order Successful, Payment ID: ${response.razorpay_payment_id}`,
           });
-          setCartProducts([]);
+          clearCart();
+          navigate("/");
         },
         prefill: {
           name: address.name,
@@ -88,7 +99,12 @@ export const AddressModal = ({ amount, setAddressModal }) => {
             type="number"
           />
         </label>
-        <button onClick={handleSubmit}>Check Out</button>
+        <button className="dummybtn" onClick={handleDummyData}>
+          Fill Dummy Data
+        </button>
+        <button className="checkout" onClick={handleSubmit}>
+          Check Out
+        </button>
       </div>
     </div>
   );

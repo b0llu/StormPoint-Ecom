@@ -206,7 +206,7 @@ export const products = [
     _id: uuid(),
     image: "https://m.media-amazon.com/images/I/81x069mwcbL._SX522_.jpg",
     title:
-      "ASUS ROG Strix B550-F Gaming WiFi 6 (AMD AM4 Socket for 3rd Gen AMD Ryzen) ATX Gaming Motherboard",
+      "ASUS ROG Strix B550-F ATX Gaming Motherboard",
     subTitle: "Asus",
     description:
       "ASUS ROG Strix B550-F Gaming WiFi 6 (AMD AM4 Socket for 3rd Gen AMD Ryzen) ATX Gaming Motherboard with PCIe 4.0, teamed Power Stages, BIOS Flashback, Dual M.2 SATA 6 Gbps USB & Aura Sync",

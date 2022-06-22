@@ -36,4 +36,8 @@ section .hamburger {
     z-index: 1;
     border-radius: 1rem;
   }
+
+  .children-container {
+    justify-content: center;
+  }
 }

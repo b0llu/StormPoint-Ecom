@@ -23,7 +23,7 @@ export const Pagination = ({
 
   return (
     <>
-      {pageNumbers.length >= 1 && (
+      {pageNumbers.length > 1 && (
         <div className="pagination">
           {pageNumbers.map((num) => (
             <Link

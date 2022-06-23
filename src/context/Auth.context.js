@@ -64,8 +64,8 @@ const AuthProvider = ({ children }) => {
 
   const signout = () => {
     dispatch({ type: "ERROR_TOAST", payload: "Logged Out" });
-    localStorage.removeItem('StormPointToken');
-    localStorage.removeItem('StormPointUser');
+    localStorage.removeItem("StormPointToken");
+    localStorage.removeItem("StormPointUser");
     setCartProducts([]);
     setWishlistProducts([]);
     setUserState([]);
@@ -116,9 +116,7 @@ const AuthProvider = ({ children }) => {
             setCartProducts(response.data.user.cart);
             setWishlistProducts(response.data.user.wishlist);
           }
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
       }
     })();
   }, [encodedToken]);

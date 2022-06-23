@@ -21,19 +21,19 @@ export const CardContainer = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-    // initializing products from data
-    useEffect(() => {
-      dispatch({ type: "LOADING" }),
-        (async function () {
-          try {
-            const { data } = await axios.get("/api/products");
-            dispatch({ type: "INITIALIZE_PRODUCTS", payload: data.products });
-            dispatch({ type: "LOADING" });
-          } catch (err) {
-            console.log(err);
-          }
-        })();
-    }, []);
+  // initializing products from data
+  useEffect(() => {
+    dispatch({ type: "LOADING" }),
+      (async function () {
+        try {
+          const { data } = await axios.get("/api/products");
+          dispatch({ type: "INITIALIZE_PRODUCTS", payload: data.products });
+          dispatch({ type: "LOADING" });
+        } catch (err) {
+          console.log(err);
+        }
+      })();
+  }, []);
 
   const wishlistAdd = (e, product) => {
     e.stopPropagation();

@@ -17,7 +17,6 @@ export const Pagination = ({
   useEffect(() => {
     if (pageNumbers.length === 1) {
       paginate(1);
-      navigate("/products");
     }
   }, [pageNumbers.length]);
 

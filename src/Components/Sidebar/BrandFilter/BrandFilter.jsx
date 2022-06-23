@@ -1,28 +1,18 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { useFilterReducerContext } from "../../../context/FilterReducer.context";
-import { Loader } from "../../Loader/Loader";
 
 export const BrandFilter = () => {
-  const { loading, brands, dispatch } = useFilterReducerContext();
+  const { brands, dispatch } = useFilterReducerContext();
 
   const [brandData, setBrandData] = useState([]);
 
-  const currentPath = useLocation();
   // initializing brands from data
   useEffect(() => {
     (async function () {
       const { data } = await axios.get("/api/brands");
       setBrandData(data.brands);
     })();
-    if (currentPath.hash !== "") {
-      dispatch({ type: "RESET" });
-      dispatch({
-        type: "BRAND_FILTER",
-        payload: currentPath.hash.substring(1),
-      });
-    }
   }, []);
 
   return (

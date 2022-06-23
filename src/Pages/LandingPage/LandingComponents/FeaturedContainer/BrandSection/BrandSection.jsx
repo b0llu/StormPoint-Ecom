@@ -1,14 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../../../Components";
 import { useFilterReducerContext } from "../../../../../context/FilterReducer.context";
-import { ProductPage } from "../../../../ProductPage/ProductPage";
 
 export const BrandSection = () => {
-  const { loading, brands, dispatch } = useFilterReducerContext();
+  const { loading, dispatch } = useFilterReducerContext();
 
   const [brandData, setBrandData] = useState([]);
+
+  const navigate = useNavigate();
 
   // initializing brands from data
   useEffect(() => {
@@ -20,6 +21,15 @@ export const BrandSection = () => {
       })();
   }, []);
 
+  const brandHandler = (brand) => {
+    dispatch({ type: "RESET" });
+    dispatch({
+      type: "BRAND_FILTER",
+      payload: brand,
+    });
+    navigate("/products");
+  };
+
   return (
     <>
       {loading ? (
@@ -29,20 +39,12 @@ export const BrandSection = () => {
           {brandData.map((brand) => {
             return (
               <div
-                onClick={(e) =>
-                  dispatch({
-                    type: "BRAND_FILTER",
-                    payload: e.target.value,
-                  })
-                }
-                checked={brands[brand.value] ?? false}
+                onClick={() => brandHandler(brand.value)}
                 value={brand.value}
                 key={brand.id}
                 className="category"
               >
-                <Link to={`/products#${brand.value}`} element={<ProductPage />}>
-                  <img className="rsp-img" src={brand.image} />
-                </Link>
+                <img className="rsp-img" src={brand.image} />
               </div>
             );
           })}

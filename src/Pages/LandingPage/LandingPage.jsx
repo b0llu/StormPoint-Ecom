@@ -1,7 +1,3 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useCartContext } from "../../context/Cart.context";
-import { useWishlistContext } from "../../context/Wishlist.context";
 import { useDocTitle } from "../../Hook/useTitle";
 import {
   FeaturedContainer,

@@ -1,6 +1,23 @@
 .error-page {
-    text-align: center;
-    width: 100%;
-    font-size: 4rem;
-    margin-top: 5rem;
+  text-align: center;
+  width: 100%;
+  font-size: 4rem;
+  margin-top: 5rem;
+  color: var(--content-color);
+}
+
+.error-page-back {
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+  margin-top: 5rem;
+  font-weight: 500;
+  color: var(--content-color);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.error-page-back:hover {
+  color: var(--primary-color);
+  transition: 0.2s ease-in-out;
 }

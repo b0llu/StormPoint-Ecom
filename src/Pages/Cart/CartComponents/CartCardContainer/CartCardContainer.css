@@ -6,6 +6,22 @@
   align-self: center;
 }
 
+.title-go {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2rem 0;
+  color: var(--content-color);
+  align-self: center;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.title-go:hover {
+  color: var(--primary-color);
+  transition: 0.2s ease-in-out;
+}
+
 section {
   grid-area: contentarea;
 }

@@ -15,13 +15,6 @@ export const brands = [
   },
   {
     _id: uuid(),
-    brandName: "AMD",
-    value: "amd",
-    image:
-      "https://i.etsystatic.com/23511185/r/il/7112ac/2408810313/il_fullxfull.2408810313_kqb8.jpg",
-  },
-  {
-    _id: uuid(),
     brandName: "Nvidia",
     value: "nvidia",
     image:
